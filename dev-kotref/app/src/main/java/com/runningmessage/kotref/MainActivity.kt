@@ -10,6 +10,7 @@ import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.runningmessage.kotref.kotlin.coroutines.Basic
+import com.runningmessage.kotref.kotlin.coroutines.CancelTimeout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.coroutines.GlobalScope
@@ -140,6 +141,12 @@ class MainActivity : AppCompatActivity() {
                     map1["Basic.Companion::t02"] = Basic.Companion::t02
                     map1["Basic.Companion::t03"] = Basic.Companion::t03
                     map1["Basic.Companion::t04"] = Basic.Companion::t04
+                    map1["Basic.Companion::t05"] = Basic.Companion::t05
+                    map1["Basic.Companion::t06"] = Basic.Companion::t06
+                    map1["CancelTimeout.Companion::t01"] = CancelTimeout.Companion::t01
+                    map1["CancelTimeout.Companion::t02"] = CancelTimeout.Companion::t02
+                    map1["CancelTimeout.Companion::t03"] = CancelTimeout.Companion::t03
+                    map1["CancelTimeout.Companion::t04"] = CancelTimeout.Companion::t04
 
                     val list = ArrayList<LinkedHashMap<String, () -> Any>>()
                     list.add(map1)

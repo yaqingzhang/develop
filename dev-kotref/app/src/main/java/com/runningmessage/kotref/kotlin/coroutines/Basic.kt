@@ -1,9 +1,7 @@
 package com.runningmessage.kotref.kotlin.coroutines
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.runningmessage.kotref.utils.wrap
+import kotlinx.coroutines.*
 
 /**
  * Created by Lorss on 18-11-23.
@@ -14,63 +12,119 @@ class Basic {
     companion object {
 
 
-        fun t01(): Any {
-            val sb = StringBuilder()
+        /**你的第一个协程程序*/
+        fun t01() = wrap {
 
             GlobalScope.launch {
 
                 delay(1000L)
 
-                sb.append("World!")
+                println("World!")
             }
 
-            sb.append("Hello, ")
-            return sb.toString()
+            println("Hello, ")
         }
 
-        fun t02(): Any {
-            val sb = StringBuilder()
+
+        /**桥接阻塞与非阻塞的世界*/
+        fun t02() = wrap {
+
             GlobalScope.launch {
                 delay(1000L)
-                sb.append("World!")
+                println("World!")
             }
 
-            sb.append("Hello, ")
+            println("Hello, ")
             runBlocking {
                 delay(2000L)
             }
-            return sb.toString()
+
         }
 
-        fun t03(): Any {
-            val sb = StringBuilder()
+        /**等待一个任务*/
+        fun t03() = wrap {
+
 
             runBlocking {
                 val job = GlobalScope.launch {
                     delay(1000L)
-                    sb.append("World!")
+                    println("World!")
                 }
 
-                sb.append("Hello, ")
+                println("Hello, ")
                 job.join()
             }
 
-            return sb
+
         }
 
-        fun t04(): Any {
-            val sb = StringBuilder()
+        /**结构化的并发*/
+        fun t04() = wrap {
+
 
             runBlocking {
                 launch {
                     delay(1000L)
-                    sb.append("World!")
+                    println("World!")
                 }
 
-                sb.append("Hello, ")
+                println("Hello, ")
             }
 
-            return sb
+
+        }
+
+        /**作用域构建器*/
+        //TODO m:lorss analyse
+        fun t05() = wrap {
+
+
+            runBlocking {
+
+                launch {
+                    delay(200L)
+                    println("\nTask from runBlocking")
+                }
+
+                coroutineScope {
+                    //Not blocking when waiting for complete
+
+                    launch {
+                        delay(500L)
+                        println("\nTask from nested launch")
+                    }
+
+                    delay(100L)
+                    println("\nTask from coroutineScope")
+                }
+
+                println("\nCoroutineScope is over")
+            }
+
+
+        }
+
+
+        /**提取函数重构*/
+        fun t06() = wrap {
+
+            runBlocking {
+                launch {
+                    delay(1000L)
+                    println("Hello, ")
+                }
+
+                coroutineScope {
+                    launch {
+                        delay(2000L)
+                        println("CoroutineScope: ")
+                    }
+                }
+
+                println("Wrold! ")
+            }
+
+
         }
 
 
