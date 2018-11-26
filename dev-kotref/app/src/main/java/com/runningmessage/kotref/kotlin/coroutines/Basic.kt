@@ -1,5 +1,6 @@
 package com.runningmessage.kotref.kotlin.coroutines
 
+import com.runningmessage.kotref.utils.mPrintln
 import com.runningmessage.kotref.utils.wrap
 import kotlinx.coroutines.*
 
@@ -19,10 +20,10 @@ class Basic {
 
                 delay(1000L)
 
-                println("World!")
+                mPrintln("World!")
             }
 
-            println("Hello, ")
+            mPrintln("Hello, ")
         }
 
 
@@ -31,10 +32,10 @@ class Basic {
 
             GlobalScope.launch {
                 delay(1000L)
-                println("World!")
+                mPrintln("World!")
             }
 
-            println("Hello, ")
+            mPrintln("Hello, ")
             runBlocking {
                 delay(2000L)
             }
@@ -48,10 +49,10 @@ class Basic {
             runBlocking {
                 val job = GlobalScope.launch {
                     delay(1000L)
-                    println("World!")
+                    mPrintln("World!")
                 }
 
-                println("Hello, ")
+                mPrintln("Hello, ")
                 job.join()
             }
 
@@ -65,10 +66,10 @@ class Basic {
             runBlocking {
                 launch {
                     delay(1000L)
-                    println("World!")
+                    mPrintln("World!")
                 }
 
-                println("Hello, ")
+                mPrintln("Hello, ")
             }
 
 
@@ -83,7 +84,7 @@ class Basic {
 
                 launch {
                     delay(200L)
-                    println("\nTask from runBlocking")
+                    mPrintln("\nTask from runBlocking")
                 }
 
                 coroutineScope {
@@ -91,14 +92,14 @@ class Basic {
 
                     launch {
                         delay(500L)
-                        println("\nTask from nested launch")
+                        mPrintln("\nTask from nested launch")
                     }
 
                     delay(100L)
-                    println("\nTask from coroutineScope")
+                    mPrintln("\nTask from coroutineScope")
                 }
 
-                println("\nCoroutineScope is over")
+                mPrintln("\nCoroutineScope is over")
             }
 
 
@@ -111,17 +112,17 @@ class Basic {
             runBlocking {
                 launch {
                     delay(1000L)
-                    println("Hello, ")
+                    mPrintln("Hello, ")
                 }
 
                 coroutineScope {
                     launch {
                         delay(2000L)
-                        println("CoroutineScope: ")
+                        mPrintln("CoroutineScope: ")
                     }
                 }
 
-                println("Wrold! ")
+                mPrintln("Wrold! ")
             }
 
 

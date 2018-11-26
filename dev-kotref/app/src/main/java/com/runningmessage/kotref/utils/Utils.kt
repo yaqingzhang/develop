@@ -5,10 +5,15 @@ package com.runningmessage.kotref.utils
  */
 fun wrap(apply: StringBuilder.() -> Unit): Any {
     val sb = StringBuilder()
-    apply.invoke(sb)
+    try {
+        apply.invoke(sb)
+    } catch (e: Exception) {
+        sb.mPrintln(e.toString())
+    } finally {
+    }
     return sb
 }
 
-fun StringBuilder.println(obj: Any?) {
+fun StringBuilder.mPrintln(obj: Any?) {
     append(obj?.toString() ?: "").append("\n")
 }

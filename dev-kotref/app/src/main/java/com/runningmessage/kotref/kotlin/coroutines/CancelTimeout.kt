@@ -1,5 +1,6 @@
 package com.runningmessage.kotref.kotlin.coroutines
 
+import com.runningmessage.kotref.utils.mPrintln
 import com.runningmessage.kotref.utils.wrap
 import kotlinx.coroutines.*
 
@@ -25,10 +26,10 @@ class CancelTimeout {
                 }
 
                 delay(1500L)
-                println("\nmain: I'm tired of waiting!")
+                mPrintln("\nmain: I'm tired of waiting!")
                 job.cancel()
                 job.join()
-                println("main: Now I can quit!")
+                mPrintln("main: Now I can quit!")
 
             }
         }
@@ -45,7 +46,7 @@ class CancelTimeout {
 
                     while (i < 5) {
                         if (System.currentTimeMillis() >= nextPrintTime) {
-                            println("I'm sleeping ${i++} ...")
+                            mPrintln("I'm sleeping ${i++} ...")
                             nextPrintTime += 500L
                         }
                     }
@@ -53,9 +54,9 @@ class CancelTimeout {
                 }
 
                 delay(1300L)
-                println("main: I'm tired of waiting!")
+                mPrintln("main: I'm tired of waiting!")
                 job.cancelAndJoin()
-                println("main: Now I can quit.")
+                mPrintln("main: Now I can quit.")
             }
         }
 
@@ -72,14 +73,14 @@ class CancelTimeout {
                             delay(500)
                         }
                     } finally {
-                        println("I'm running finally...")
+                        mPrintln("I'm running finally...")
                     }
                 }
 
                 delay(1500L)
-                println("\nmain: I'm tired of waiting!")
+                mPrintln("\nmain: I'm tired of waiting!")
                 job.cancelAndJoin()
-                println("main: Now I can quit!")
+                mPrintln("main: Now I can quit!")
 
             }
         }
@@ -92,22 +93,37 @@ class CancelTimeout {
                 val job = launch {
                     try {
                         repeat(1000) {
-                            println("I'm sleeping $it ...")
+                            mPrintln("I'm sleeping $it ...")
                             delay(500L)
                         }
                     } finally {
                         withContext(NonCancellable) {
-                            println("I'm running finally")
+                            mPrintln("I'm running finally")
                             delay(1000L)
-                            println("And I've just delayed for 1 sec because I'm non-cacellable")
+                            mPrintln("And I've just delayed for 1 sec because I'm non-cacellable")
                         }
                     }
                 }
 
                 delay(1500L)
-                println("\nmain: I'm tired of waiting!")
+                mPrintln("\nmain: I'm tired of waiting!")
                 job.cancelAndJoin()
-                println("main: Now I can quit!")
+                mPrintln("main: Now I can quit!")
+            }
+        }
+
+        /**超时*/
+        fun t05() = wrap {
+
+
+            runBlocking {
+
+                withTimeout(1300L) {
+                    repeat(1000) {
+                        mPrintln("I'm sleeping $it ...")
+                        delay(500)
+                    }
+                }
             }
         }
     }

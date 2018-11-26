@@ -147,6 +147,7 @@ class MainActivity : AppCompatActivity() {
                     map1["CancelTimeout.Companion::t02"] = CancelTimeout.Companion::t02
                     map1["CancelTimeout.Companion::t03"] = CancelTimeout.Companion::t03
                     map1["CancelTimeout.Companion::t04"] = CancelTimeout.Companion::t04
+                    map1["CancelTimeout.Companion::t05"] = CancelTimeout.Companion::t05
 
                     val list = ArrayList<LinkedHashMap<String, () -> Any>>()
                     list.add(map1)
