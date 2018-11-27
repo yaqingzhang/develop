@@ -118,6 +118,7 @@ class CancelTimeout {
 
             runBlocking {
 
+                //withTimeoutOrNull not throw Exception but return null
                 withTimeout(1300L) {
                     repeat(1000) {
                         mPrintln("I'm sleeping $it ...")

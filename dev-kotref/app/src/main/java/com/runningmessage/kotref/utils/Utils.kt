@@ -3,8 +3,8 @@ package com.runningmessage.kotref.utils
 /**
  * Created by Lorss on 18-11-26.
  */
-fun wrap(apply: StringBuilder.() -> Unit): Any {
-    val sb = StringBuilder()
+fun wrap(apply: StringBuilder.() -> Unit): StringBuilder {
+    val sb = StringBuilder("\n")
     try {
         apply.invoke(sb)
     } catch (e: Exception) {
@@ -13,6 +13,7 @@ fun wrap(apply: StringBuilder.() -> Unit): Any {
     }
     return sb
 }
+
 
 fun StringBuilder.mPrintln(obj: Any?) {
     append(obj?.toString() ?: "").append("\n")

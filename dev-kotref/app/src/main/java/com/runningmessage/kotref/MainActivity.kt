@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.runningmessage.kotref.kotlin.coroutines.Basic
 import com.runningmessage.kotref.kotlin.coroutines.CancelTimeout
+import com.runningmessage.kotref.kotlin.coroutines.Channels
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.coroutines.GlobalScope
@@ -98,9 +99,10 @@ class MainActivity : AppCompatActivity() {
             val index = arguments?.getInt(ARG_SECTION_NUMBER) ?: 1
             rootView.section_label.text = getString(R.string.section_format, index)
 
+
             if (mapList.size >= index && index > 0) {
                 for ((name, apply) in mapList[index - 1]) {
-                    if (rootView is ViewGroup) rootView.addButton(name, apply)
+                    if (rootView.text_container is ViewGroup) rootView.text_container.addButton(name, apply)
                 }
             }
             return rootView
@@ -137,17 +139,30 @@ class MainActivity : AppCompatActivity() {
                 get() {
 
                     val map1 = LinkedHashMap<String, () -> Any>()
+
                     map1["Basic.Companion::t01"] = Basic.Companion::t01
                     map1["Basic.Companion::t02"] = Basic.Companion::t02
                     map1["Basic.Companion::t03"] = Basic.Companion::t03
                     map1["Basic.Companion::t04"] = Basic.Companion::t04
                     map1["Basic.Companion::t05"] = Basic.Companion::t05
                     map1["Basic.Companion::t06"] = Basic.Companion::t06
+
                     map1["CancelTimeout.Companion::t01"] = CancelTimeout.Companion::t01
                     map1["CancelTimeout.Companion::t02"] = CancelTimeout.Companion::t02
                     map1["CancelTimeout.Companion::t03"] = CancelTimeout.Companion::t03
                     map1["CancelTimeout.Companion::t04"] = CancelTimeout.Companion::t04
                     map1["CancelTimeout.Companion::t05"] = CancelTimeout.Companion::t05
+
+                    map1["Channels.Companion.t01"] = Channels.Companion::t01
+                    map1["Channels.Companion.t02"] = Channels.Companion::t02
+                    map1["Channels.Companion.t03"] = Channels.Companion::t03
+                    map1["Channels.Companion.t04"] = Channels.Companion::t04
+                    map1["Channels.Companion.t05"] = Channels.Companion::t05
+                    map1["Channels.Companion.t06"] = Channels.Companion::t06
+                    map1["Channels.Companion.t07"] = Channels.Companion::t07
+                    map1["Channels.Companion.t08"] = Channels.Companion::t08
+                    map1["Channels.Companion.t09"] = Channels.Companion::t09
+
 
                     val list = ArrayList<LinkedHashMap<String, () -> Any>>()
                     list.add(map1)
