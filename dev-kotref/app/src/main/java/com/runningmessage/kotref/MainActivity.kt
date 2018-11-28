@@ -8,10 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.runningmessage.kotref.kotlin.coroutines.Basic
-import com.runningmessage.kotref.kotlin.coroutines.CancelTimeout
-import com.runningmessage.kotref.kotlin.coroutines.Channels
-import com.runningmessage.kotref.kotlin.coroutines.ComSusFun
+import com.runningmessage.kotref.kotlin.coroutines.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import org.jetbrains.anko.doAsync
@@ -179,12 +176,17 @@ class MainActivity : AppCompatActivity() {
                     map1["ComSusFun.Companion.t05"] = ComSusFun.Companion::t05
                     map1["ComSusFun.Companion.t05"] = ComSusFun.Companion::t05
                     map1["ComSusFun.Companion.t051"] = ComSusFun.Companion::t051
-//                    map1["ComSusFun.Companion.t06"] = ComSusFun.Companion::t06
-//                    map1["ComSusFun.Companion.t07"] = ComSusFun.Companion::t07
-//                    map1["ComSusFun.Companion.t08"] = ComSusFun.Companion::t08
-//                    map1["ComSusFun.Companion.t09"] = ComSusFun.Companion::t09
-//                    map1["ComSusFun.Companion.t10"] = ComSusFun.Companion::t10
 
+                    map1["ContextDispatchers.Companion.t01"] = ContextDispatchers.Companion::t01
+                    map1["ContextDispatchers.Companion.t02"] = ContextDispatchers.Companion::t02
+                    map1["ContextDispatchers.Companion.t03"] = ContextDispatchers.Companion::t03
+                    map1["ContextDispatchers.Companion.t04"] = ContextDispatchers.Companion::t04
+//                    map1["ContextDispatchers.Companion.t05"] = ContextDispatchers.Companion::t05
+//                    map1["ContextDispatchers.Companion.t06"] = ContextDispatchers.Companion::t06
+//                    map1["ContextDispatchers.Companion.t07"] = ContextDispatchers.Companion::t07
+//                    map1["ContextDispatchers.Companion.t08"] = ContextDispatchers.Companion::t08
+//                    map1["ContextDispatchers.Companion.t09"] = ContextDispatchers.Companion::t09
+//                    map1["ContextDispatchers.Companion.t10"] = ContextDispatchers.Companion::t10
 
                     val list = ArrayList<LinkedHashMap<String, () -> Any>>()
                     list.add(map1)
