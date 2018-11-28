@@ -1,7 +1,6 @@
 package com.runningmessage.kotref
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
@@ -12,10 +11,11 @@ import android.widget.TextView
 import com.runningmessage.kotref.kotlin.coroutines.Basic
 import com.runningmessage.kotref.kotlin.coroutines.CancelTimeout
 import com.runningmessage.kotref.kotlin.coroutines.Channels
+import com.runningmessage.kotref.kotlin.coroutines.ComSusFun
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
 
@@ -121,13 +121,21 @@ class MainActivity : AppCompatActivity() {
                 btn.layoutParams = lp
             }
             btn.setOnClickListener {
+                /** Using kotlinx coroutines*/
+//                GlobalScope.launch {
+//
+//                    val result = click.invoke().toString()
+//                    val resultText = "$text = $result"
+//                    activity?.runOnUiThread { btn.text = resultText }
+//                }
 
-                GlobalScope.launch {
-
+                /** Using anko*/
+                doAsync {
                     val result = click.invoke().toString()
                     val resultText = "$text = $result"
-                    activity?.runOnUiThread { btn.text = resultText }
+                    uiThread { btn.text = resultText }
                 }
+
 
             }
             addView(btn)
@@ -163,6 +171,19 @@ class MainActivity : AppCompatActivity() {
                     map1["Channels.Companion.t08"] = Channels.Companion::t08
                     map1["Channels.Companion.t09"] = Channels.Companion::t09
                     map1["Channels.Companion.t10"] = Channels.Companion::t10
+
+                    map1["ComSusFun.Companion.t01"] = ComSusFun.Companion::t01
+                    map1["ComSusFun.Companion.t02"] = ComSusFun.Companion::t02
+                    map1["ComSusFun.Companion.t03"] = ComSusFun.Companion::t03
+                    map1["ComSusFun.Companion.t04"] = ComSusFun.Companion::t04
+                    map1["ComSusFun.Companion.t05"] = ComSusFun.Companion::t05
+                    map1["ComSusFun.Companion.t05"] = ComSusFun.Companion::t05
+                    map1["ComSusFun.Companion.t051"] = ComSusFun.Companion::t051
+//                    map1["ComSusFun.Companion.t06"] = ComSusFun.Companion::t06
+//                    map1["ComSusFun.Companion.t07"] = ComSusFun.Companion::t07
+//                    map1["ComSusFun.Companion.t08"] = ComSusFun.Companion::t08
+//                    map1["ComSusFun.Companion.t09"] = ComSusFun.Companion::t09
+//                    map1["ComSusFun.Companion.t10"] = ComSusFun.Companion::t10
 
 
                     val list = ArrayList<LinkedHashMap<String, () -> Any>>()

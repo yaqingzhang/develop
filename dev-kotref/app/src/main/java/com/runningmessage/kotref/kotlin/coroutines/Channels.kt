@@ -6,6 +6,8 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 
 /**
+ * 通道
+ *
  * Created by Lorss on 18-11-27.
  */
 class Channels {
@@ -209,11 +211,11 @@ class Channels {
 
                 val table = Channel<Ball>()
 
-                launch { mPrintln(player("A1", table, this@wrap)) }
-                launch { mPrintln(player("B1", table, this@wrap)) }
+                launch { mPrintln(player("A1", table)) }
+                launch { mPrintln(player("B1", table)) }
 
-                launch { mPrintln(player("A2", table, this@wrap)) }
-                launch { mPrintln(player("B2", table, this@wrap)) }
+                launch { mPrintln(player("A2", table)) }
+                launch { mPrintln(player("B2", table)) }
 
                 table.send(Ball())
                 delay(2000)
@@ -226,21 +228,18 @@ class Channels {
 
         data class Ball(var hits: Int = 0, var from: String = "Referee")
 
-        private suspend fun player(name: String, table: Channel<Ball>, outer: StringBuilder) {
+        private suspend fun StringBuilder.player(name: String, table: Channel<Ball>) {
+            for (ball in table) {
+                ball.hits++
 
-            with(outer) {
-                for (ball in table) {
-                    ball.hits++
+                mPrintln("$name hit the $ball")
 
-                    mPrintln("$name hit the $ball")
+                ball.from = name
 
-                    ball.from = name
+                delay(300)
 
-                    delay(300)
+                table.send(ball)
 
-                    table.send(ball)
-
-                }
             }
             /**[player]*/
         }

@@ -5,6 +5,8 @@ import com.runningmessage.kotref.utils.wrap
 import kotlinx.coroutines.*
 
 /**
+ * 取消与超时
+ *
  * Created by Lorss on 18-11-26.
  */
 class CancelTimeout {

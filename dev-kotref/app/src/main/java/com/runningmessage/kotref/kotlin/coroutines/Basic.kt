@@ -5,6 +5,8 @@ import com.runningmessage.kotref.utils.wrap
 import kotlinx.coroutines.*
 
 /**
+ * 基础
+ *
  * Created by Lorss on 18-11-23.
  */
 class Basic {
