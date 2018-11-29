@@ -33,3 +33,17 @@ suspend fun StringBuilder.sLog(obj: Any?) {
     append("[ ${Thread.currentThread().name}  @${coroutineContext[CoroutineName]} ] ")
     mPrintln(obj)
 }
+
+private val defaultUncaughtExceptionHandlerList: ArrayList<(Thread, Throwable) -> Boolean> = ArrayList()
+
+fun defaultUncaughtExceptionHandler(handler: (Thread, Throwable) -> Boolean) {
+    if (defaultUncaughtExceptionHandlerList.size == 0) {
+        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            for (h in defaultUncaughtExceptionHandlerList) {
+                if (h.invoke(thread, throwable)) break
+            }
+        }
+    }
+    defaultUncaughtExceptionHandlerList.add(handler)
+}
+
