@@ -1,5 +1,8 @@
 package com.runningmessage.kotref.utils
 
+import kotlinx.coroutines.CoroutineName
+import kotlin.coroutines.coroutineContext
+
 /**
  * Created by Lorss on 18-11-26.
  */
@@ -14,7 +17,19 @@ fun wrap(apply: StringBuilder.() -> Unit): StringBuilder {
     return sb
 }
 
-
+/** append String for [obj] with suffix : \n*/
 fun StringBuilder.mPrintln(obj: Any?) {
     append(obj?.toString() ?: "").append("\n")
+}
+
+/** append String for [obj] with prefix : the name of current Thread*/
+fun StringBuilder.log(obj: Any?) {
+    append("[ ${Thread.currentThread().name} ] ")
+    mPrintln(obj)
+}
+
+/** append String for [obj] with prefix : the name of current Thread and the name of current Coroutine*/
+suspend fun StringBuilder.sLog(obj: Any?) {
+    append("[ ${Thread.currentThread().name}  @${coroutineContext[CoroutineName]} ] ")
+    mPrintln(obj)
 }

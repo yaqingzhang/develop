@@ -181,12 +181,21 @@ class MainActivity : AppCompatActivity() {
                     map1["ContextDispatchers.Companion.t02"] = ContextDispatchers.Companion::t02
                     map1["ContextDispatchers.Companion.t03"] = ContextDispatchers.Companion::t03
                     map1["ContextDispatchers.Companion.t04"] = ContextDispatchers.Companion::t04
-//                    map1["ContextDispatchers.Companion.t05"] = ContextDispatchers.Companion::t05
-//                    map1["ContextDispatchers.Companion.t06"] = ContextDispatchers.Companion::t06
-//                    map1["ContextDispatchers.Companion.t07"] = ContextDispatchers.Companion::t07
-//                    map1["ContextDispatchers.Companion.t08"] = ContextDispatchers.Companion::t08
-//                    map1["ContextDispatchers.Companion.t09"] = ContextDispatchers.Companion::t09
-//                    map1["ContextDispatchers.Companion.t10"] = ContextDispatchers.Companion::t10
+                    map1["ContextDispatchers.Companion.t05"] = ContextDispatchers.Companion::t05
+                    map1["ContextDispatchers.Companion.t06"] = ContextDispatchers.Companion::t06
+                    map1["ContextDispatchers.Companion.t07"] = ContextDispatchers.Companion::t07
+                    map1["ContextDispatchers.Companion.t08"] = ContextDispatchers.Companion::t08
+                    map1["ContextDispatchers.Companion.t09"] = ContextDispatchers.Companion::t09
+                    map1["ContextDispatchers.Companion.t10"] = ContextDispatchers.Companion::t10
+                    map1["ContextDispatchers.Companion.t11"] = ContextDispatchers.Companion::t11
+//                    map1["ContextDispatchers.Companion.t12"] = ContextDispatchers.Companion::t12
+//                    map1["ContextDispatchers.Companion.t13"] = ContextDispatchers.Companion::t13
+//                    map1["ContextDispatchers.Companion.t14"] = ContextDispatchers.Companion::t14
+//                    map1["ContextDispatchers.Companion.t15"] = ContextDispatchers.Companion::t15
+//                    map1["ContextDispatchers.Companion.t16"] = ContextDispatchers.Companion::t16
+//                    map1["ContextDispatchers.Companion.t17"] = ContextDispatchers.Companion::t17
+//                    map1["ContextDispatchers.Companion.t18"] = ContextDispatchers.Companion::t18
+//                    map1["ContextDispatchers.Companion.t19"] = ContextDispatchers.Companion::t19
 
                     val list = ArrayList<LinkedHashMap<String, () -> Any>>()
                     list.add(map1)
