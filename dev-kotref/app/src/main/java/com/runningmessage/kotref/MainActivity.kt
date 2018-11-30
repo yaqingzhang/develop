@@ -204,20 +204,26 @@ class MainActivity : AppCompatActivity() {
                     map1["Select.Companion.t03"] = Select.Companion::t03
                     map1["Select.Companion.t04"] = Select.Companion::t04
                     map1["Select.Companion.t05"] = Select.Companion::t05
-//                    map1["Select.Companion.t06"] = Select.Companion::t06
-//                    map1["Select.Companion.t07"] = Select.Companion::t07
-//                    map1["Select.Companion.t08"] = Select.Companion::t08
-//                    map1["Select.Companion.t09"] = Select.Companion::t09
-//                    map1["Select.Companion.t10"] = Select.Companion::t10
-//                    map1["Select.Companion.t11"] = Select.Companion::t11
-//                    map1["Select.Companion.t12"] = Select.Companion::t12
-//                    map1["Select.Companion.t13"] = Select.Companion::t13
-//                    map1["Select.Companion.t14"] = Select.Companion::t14
-//                    map1["Select.Companion.t15"] = Select.Companion::t15
-//                    map1["Select.Companion.t16"] = Select.Companion::t16
-//                    map1["Select.Companion.t17"] = Select.Companion::t17
-//                    map1["Select.Companion.t18"] = Select.Companion::t18
-//                    map1["Select.Companion.t19"] = Select.Companion::t19
+
+                    map1["SMSConcurrency.Companion.t01"] = SMSConcurrency.Companion::t01
+//                    map1["SMSConcurrency.Companion.t02"] = SMSConcurrency.Companion::t02
+//                    map1["SMSConcurrency.Companion.t03"] = SMSConcurrency.Companion::t03
+//                    map1["SMSConcurrency.Companion.t04"] = SMSConcurrency.Companion::t04
+//                    map1["SMSConcurrency.Companion.t05"] = SMSConcurrency.Companion::t05
+//                    map1["SMSConcurrency.Companion.t06"] = SMSConcurrency.Companion::t06
+//                    map1["SMSConcurrency.Companion.t07"] = SMSConcurrency.Companion::t07
+//                    map1["SMSConcurrency.Companion.t08"] = SMSConcurrency.Companion::t08
+//                    map1["SMSConcurrency.Companion.t09"] = SMSConcurrency.Companion::t09
+//                    map1["SMSConcurrency.Companion.t10"] = SMSConcurrency.Companion::t10
+//                    map1["SMSConcurrency.Companion.t11"] = SMSConcurrency.Companion::t11
+//                    map1["SMSConcurrency.Companion.t12"] = SMSConcurrency.Companion::t12
+//                    map1["SMSConcurrency.Companion.t13"] = SMSConcurrency.Companion::t13
+//                    map1["SMSConcurrency.Companion.t14"] = SMSConcurrency.Companion::t14
+//                    map1["SMSConcurrency.Companion.t15"] = SMSConcurrency.Companion::t15
+//                    map1["SMSConcurrency.Companion.t16"] = SMSConcurrency.Companion::t16
+//                    map1["SMSConcurrency.Companion.t17"] = SMSConcurrency.Companion::t17
+//                    map1["SMSConcurrency.Companion.t18"] = SMSConcurrency.Companion::t18
+//                    map1["SMSConcurrency.Companion.t19"] = SMSConcurrency.Companion::t19
 
                     val list = ArrayList<LinkedHashMap<String, () -> Any>>()
                     list.add(map1)
