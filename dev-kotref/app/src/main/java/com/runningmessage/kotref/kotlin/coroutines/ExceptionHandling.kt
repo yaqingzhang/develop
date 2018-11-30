@@ -158,7 +158,7 @@ class ExceptionHandling {
                     launch {
                         try {
                             delay(Long.MAX_VALUE)
-                        }finally {
+                        } finally {
                             throw ArithmeticException()
                         }
                     }
@@ -175,5 +175,132 @@ class ExceptionHandling {
             }
             /**[t04]*/
         }
+
+
+        /**异常聚合-CancellationException 解包*/
+        fun t041() = wrap {
+
+            runBlocking {
+                val handler = CoroutineExceptionHandler { _, exception ->
+                    mPrintln("Caught original $exception")
+                }
+
+                val job = GlobalScope.launch(handler) {
+
+                    val inner = launch {
+
+                        launch {
+
+                            launch {
+
+                                throw IOException()
+                            }
+                        }
+                    }
+
+
+                    try {
+                        inner.join()
+                    } catch (e: CancellationException) {
+                        mPrintln("Rethrowing CancellationException with original cause")
+                        throw e// throw CancellationException but handler catches original cause exception
+                    }
+
+                }
+
+                job.join()
+            }
+            /**[t041]*/
+        }
+
+        /**监督任务*/
+        fun t05() = wrap {
+
+            runBlocking {
+                val supervisor = SupervisorJob()
+
+                with(CoroutineScope(coroutineContext + supervisor)) {
+
+                    val firstChild = launch(CoroutineExceptionHandler { _, _ -> }) {
+                        mPrintln("First child is failing")
+                        throw AssertionError("First child is cancelled")
+                    }
+
+                    val secondChild = launch {
+
+                        firstChild.join()
+
+                        mPrintln("First child is cancelled : ${firstChild.isCancelled}, " +
+                                "but second child is still active")
+
+                        try {
+                            delay(Long.MAX_VALUE)
+                        } finally {
+                            mPrintln("Second child is cancelled because supervisor is cancelled")
+                        }
+                    }
+                    firstChild.join()
+                    mPrintln("Cancelling supervisor")
+                    supervisor.cancel()
+                    secondChild.join()
+
+                }
+            }
+            /**[t05]*/
+        }
+
+        /**监督作用域*/
+        fun t06() = wrap {
+
+            runBlocking {
+                try {
+                    supervisorScope {
+                        val child = launch {
+                            try {
+                                mPrintln("Child is sleeping")
+                                delay(Long.MAX_VALUE)
+                            } finally {
+                                mPrintln("Child is cancelled")
+                            }
+                        }
+
+                        yield()// 使用yield 来给我们的子任务一些执行时间
+
+                        mPrintln("Throwing exception from scope")
+                        throw AssertionError()
+                    }
+                } catch (e: AssertionError) {
+                    mPrintln("Caught assertion error")
+                }
+            }
+            /**[t06]*/
+        }
+
+        /**监督协程中的异常*/
+        fun t07() = wrap {
+
+            runBlocking {
+                val handler = CoroutineExceptionHandler { _, exception ->
+                    mPrintln("Caught $exception")
+
+                }
+                /**
+                 * 常规的任务和监督任务之间的另一个重要区别是异常处理。	每一个子任务应该通过异常处理
+                 * 机制处理自身的异常。	这种差异来自于子任务的执行失败不会传播给它的父任务的事实。
+                 * */
+                supervisorScope {
+                    val child = launch(handler) {
+                        mPrintln("Child throws an exception")
+                        throw AssertionError()
+                    }
+                    mPrintln("Scope is completing")
+                }
+                mPrintln("Scope is completed")
+
+            }
+            /**[t07]*/
+        }
+
+        /**[ExceptionHandling.Companion]*/
     }
 }

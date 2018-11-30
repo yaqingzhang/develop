@@ -194,21 +194,30 @@ class MainActivity : AppCompatActivity() {
                     map1["ExceptionHandling.Companion.t03"] = ExceptionHandling.Companion::t03
                     map1["ExceptionHandling.Companion.t031"] = ExceptionHandling.Companion::t031
                     map1["ExceptionHandling.Companion.t04"] = ExceptionHandling.Companion::t04
-//                    map1["ExceptionHandling.Companion.t05"] = ExceptionHandling.Companion::t05
-//                    map1["ExceptionHandling.Companion.t06"] = ExceptionHandling.Companion::t06
-//                    map1["ExceptionHandling.Companion.t07"] = ExceptionHandling.Companion::t07
-//                    map1["ExceptionHandling.Companion.t08"] = ExceptionHandling.Companion::t08
-//                    map1["ExceptionHandling.Companion.t09"] = ExceptionHandling.Companion::t09
-//                    map1["ExceptionHandling.Companion.t10"] = ExceptionHandling.Companion::t10
-//                    map1["ExceptionHandling.Companion.t11"] = ExceptionHandling.Companion::t11
-//                    map1["ExceptionHandling.Companion.t12"] = ExceptionHandling.Companion::t12
-//                    map1["ExceptionHandling.Companion.t13"] = ExceptionHandling.Companion::t13
-//                    map1["ExceptionHandling.Companion.t14"] = ExceptionHandling.Companion::t14
-//                    map1["ExceptionHandling.Companion.t15"] = ExceptionHandling.Companion::t15
-//                    map1["ExceptionHandling.Companion.t16"] = ExceptionHandling.Companion::t16
-//                    map1["ExceptionHandling.Companion.t17"] = ExceptionHandling.Companion::t17
-//                    map1["ExceptionHandling.Companion.t18"] = ExceptionHandling.Companion::t18
-//                    map1["ExceptionHandling.Companion.t19"] = ExceptionHandling.Companion::t19
+                    map1["ExceptionHandling.Companion.t041"] = ExceptionHandling.Companion::t041
+                    map1["ExceptionHandling.Companion.t05"] = ExceptionHandling.Companion::t05
+                    map1["ExceptionHandling.Companion.t06"] = ExceptionHandling.Companion::t06
+                    map1["ExceptionHandling.Companion.t07"] = ExceptionHandling.Companion::t07
+
+                    map1["Select.Companion.t01"] = Select.Companion::t01
+                    map1["Select.Companion.t02"] = Select.Companion::t02
+                    map1["Select.Companion.t03"] = Select.Companion::t03
+                    map1["Select.Companion.t04"] = Select.Companion::t04
+                    map1["Select.Companion.t05"] = Select.Companion::t05
+//                    map1["Select.Companion.t06"] = Select.Companion::t06
+//                    map1["Select.Companion.t07"] = Select.Companion::t07
+//                    map1["Select.Companion.t08"] = Select.Companion::t08
+//                    map1["Select.Companion.t09"] = Select.Companion::t09
+//                    map1["Select.Companion.t10"] = Select.Companion::t10
+//                    map1["Select.Companion.t11"] = Select.Companion::t11
+//                    map1["Select.Companion.t12"] = Select.Companion::t12
+//                    map1["Select.Companion.t13"] = Select.Companion::t13
+//                    map1["Select.Companion.t14"] = Select.Companion::t14
+//                    map1["Select.Companion.t15"] = Select.Companion::t15
+//                    map1["Select.Companion.t16"] = Select.Companion::t16
+//                    map1["Select.Companion.t17"] = Select.Companion::t17
+//                    map1["Select.Companion.t18"] = Select.Companion::t18
+//                    map1["Select.Companion.t19"] = Select.Companion::t19
 
                     val list = ArrayList<LinkedHashMap<String, () -> Any>>()
                     list.add(map1)
