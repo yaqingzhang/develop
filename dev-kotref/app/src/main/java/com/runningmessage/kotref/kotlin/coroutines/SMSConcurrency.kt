@@ -2,10 +2,11 @@ package com.runningmessage.kotref.kotlin.coroutines
 
 import com.runningmessage.kotref.utils.mPrintln
 import com.runningmessage.kotref.utils.wrap
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.actor
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import java.util.concurrent.atomic.AtomicInteger
 import kotlin.system.measureTimeMillis
 
 /**
@@ -66,6 +67,104 @@ class SMSConcurrency {
 
         }
 
+        /**线程安全的数据结构*/
+        fun t02() = wrap {
+
+            var counter = AtomicInteger()
+            runBlocking {
+                GlobalScope.massiveRun(this@wrap) {
+                    counter.incrementAndGet()
+                }
+
+                mPrintln("Counter = $counter")
+            }
+            /**[t02]*/
+        }
+
+        /**以细粒度限制线程*/
+        fun t03() = wrap {
+
+            val counterContext = newSingleThreadContext("CounterContext")
+            counter = 0
+            runBlocking {
+                GlobalScope.massiveRun(this@wrap) {
+                    withContext(counterContext) {
+                        counter++
+                    }
+                }
+
+                mPrintln("Counter = $counter")
+            }
+            /**[t03]*/
+        }
+
+        /**以粗粒度限制线程*/
+        fun t04() = wrap {
+            val counterContext = newSingleThreadContext("CounterContext")
+
+            runBlocking {
+                CoroutineScope(counterContext).massiveRun(this@wrap) {
+                    counter++
+                }
+
+                mPrintln("Counter = $counter")
+            }
+            /**[t04]*/
+        }
+
+        /**互斥*/
+        fun t05() = wrap {
+
+            val mutext = Mutex()
+            runBlocking {
+                GlobalScope.massiveRun(this@wrap) {
+                    mutext.withLock {
+                        counter++
+                    }
+                }
+                mPrintln("Counter = $counter")
+            }
+            /**[t05]*/
+        }
+
+        /**Actors*/
+        fun t06() = wrap {
+
+            runBlocking {
+
+                val counter = counterActor()
+                GlobalScope.massiveRun(this@wrap) {
+                    counter.send(IncCounter)
+                }
+
+                val response = CompletableDeferred<Int>()
+                counter.send(GetCounter(response))
+
+                mPrintln("Counter = ${response.await()}")
+                counter.close()
+            }
+            /**[t06]*/
+        }
+
+        fun CoroutineScope.counterActor() = actor<CounterMsg> {
+
+            var counter = 0
+            for (msg in channel) {
+                when (msg) {
+                    is IncCounter -> counter++
+                    is GetCounter -> msg.response.complete(counter)
+                }
+            }
+        }
+
+
         /**[SMSConcurrency.Companion]*/
     }
+
+
 }
+
+sealed class CounterMsg
+object IncCounter : CounterMsg()
+class GetCounter(val response: CompletableDeferred<Int>) : CounterMsg()
+

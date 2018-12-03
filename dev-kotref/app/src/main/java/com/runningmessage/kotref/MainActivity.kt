@@ -206,11 +206,11 @@ class MainActivity : AppCompatActivity() {
                     map1["Select.Companion.t05"] = Select.Companion::t05
 
                     map1["SMSConcurrency.Companion.t01"] = SMSConcurrency.Companion::t01
-//                    map1["SMSConcurrency.Companion.t02"] = SMSConcurrency.Companion::t02
-//                    map1["SMSConcurrency.Companion.t03"] = SMSConcurrency.Companion::t03
-//                    map1["SMSConcurrency.Companion.t04"] = SMSConcurrency.Companion::t04
-//                    map1["SMSConcurrency.Companion.t05"] = SMSConcurrency.Companion::t05
-//                    map1["SMSConcurrency.Companion.t06"] = SMSConcurrency.Companion::t06
+                    map1["SMSConcurrency.Companion.t02"] = SMSConcurrency.Companion::t02
+                    map1["SMSConcurrency.Companion.t03"] = SMSConcurrency.Companion::t03
+                    map1["SMSConcurrency.Companion.t04"] = SMSConcurrency.Companion::t04
+                    map1["SMSConcurrency.Companion.t05"] = SMSConcurrency.Companion::t05
+                    map1["SMSConcurrency.Companion.t06"] = SMSConcurrency.Companion::t06
 //                    map1["SMSConcurrency.Companion.t07"] = SMSConcurrency.Companion::t07
 //                    map1["SMSConcurrency.Companion.t08"] = SMSConcurrency.Companion::t08
 //                    map1["SMSConcurrency.Companion.t09"] = SMSConcurrency.Companion::t09
