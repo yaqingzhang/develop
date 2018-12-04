@@ -18,6 +18,7 @@ import kotlin.system.measureTimeMillis
 
 class SMSConcurrency {
 
+    @ObsoleteCoroutinesApi
     companion object {
 
         /***
@@ -70,7 +71,7 @@ class SMSConcurrency {
         /**线程安全的数据结构*/
         fun t02() = wrap {
 
-            var counter = AtomicInteger()
+            val counter = AtomicInteger()
             runBlocking {
                 GlobalScope.massiveRun(this@wrap) {
                     counter.incrementAndGet()
@@ -146,7 +147,7 @@ class SMSConcurrency {
             /**[t06]*/
         }
 
-        fun CoroutineScope.counterActor() = actor<CounterMsg> {
+        private fun CoroutineScope.counterActor() = actor<CounterMsg> {
 
             var counter = 0
             for (msg in channel) {
