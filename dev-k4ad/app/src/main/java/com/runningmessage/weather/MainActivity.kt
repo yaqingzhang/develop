@@ -10,6 +10,7 @@ import com.runningmessage.weather.domain.RequestForecastCommand
 import com.runningmessage.weather.utils.anko.uiThreadDelayed
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.async
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +39,9 @@ class MainActivity : AppCompatActivity() {
                 val end = System.currentTimeMillis()
                 uiThreadDelayed(LOADING_TIME_MIN - (end - start)) {
                     button.clearAnimation()
-                    forecast_list.adapter = ForecastListAdapter(items)
+                    forecast_list.adapter = ForecastListAdapter(items) { item ->
+                        toast(item.date)
+                    }
                 }
             }
         }
