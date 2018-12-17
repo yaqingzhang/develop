@@ -13,7 +13,8 @@ class ForecastDbHelper() : ManagedSQLiteOpenHelper(App.instance, DB_NAME, null, 
         db?.createTable(CityForecastTable.NAME, true,
                 CityForecastTable.ID to INTEGER + PRIMARY_KEY,
                 CityForecastTable.CITY to TEXT,
-                CityForecastTable.COUNTRY to TEXT)
+                CityForecastTable.COUNTRY to TEXT,
+                CityForecastTable.ZIP_CODE to INTEGER)
 
         db?.createTable(DayForecastTable.NAME, true,
                 DayForecastTable.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
@@ -22,7 +23,7 @@ class ForecastDbHelper() : ManagedSQLiteOpenHelper(App.instance, DB_NAME, null, 
                 DayForecastTable.HIGH to INTEGER,
                 DayForecastTable.LOW to INTEGER,
                 DayForecastTable.ICON_URL to TEXT,
-                DayForecastTable.CITY_ID to INTEGER)
+                DayForecastTable.CITY_ID to TEXT)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

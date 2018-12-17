@@ -8,4 +8,5 @@ object CityForecastTable {
     val ID = "_id"
     val CITY = "city"
     val COUNTRY = "country"
+    val ZIP_CODE = "zipCode"
 }

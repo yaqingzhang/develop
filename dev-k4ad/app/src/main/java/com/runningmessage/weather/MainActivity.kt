@@ -16,7 +16,7 @@ import org.jetbrains.anko.uiThread
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        private const val LOADING_TIME_MIN = 5000
+        private const val LOADING_TIME_MIN = 2500
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,18 +29,20 @@ class MainActivity : AppCompatActivity() {
                 val start = System.currentTimeMillis()
                 uiThread {
                     val anim = RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, .5f, Animation.RELATIVE_TO_SELF, .5f)
-                    anim.duration = 1500
+                    anim.duration = 1000
                     anim.interpolator = AccelerateInterpolator()
                     anim.repeatCount = Animation.INFINITE
                     button.startAnimation(anim)
                 }
-                val items = RequestForecastCommand("94043").execute()
+                val items = RequestForecastCommand(94043).execute()
 
                 val end = System.currentTimeMillis()
                 uiThreadDelayed(LOADING_TIME_MIN - (end - start)) {
                     button.clearAnimation()
-                    forecast_list.adapter = ForecastListAdapter(items) { item ->
-                        toast(item.date)
+                    if (items != null) {
+                        forecast_list.adapter = ForecastListAdapter(items) { item ->
+                            toast(item.date)
+                        }
                     }
                 }
             }

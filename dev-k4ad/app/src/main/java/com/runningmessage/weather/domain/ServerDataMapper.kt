@@ -3,18 +3,16 @@ package com.runningmessage.weather.domain
 import com.runningmessage.weather.data.Forecast
 import com.runningmessage.weather.data.ForecastResult
 import com.runningmessage.weather.domain.model.ForecastList
-import java.text.DateFormat
-import java.util.*
-
+import com.runningmessage.weather.utils.convertDate
 import com.runningmessage.weather.domain.model.Forecast as ModelForecast
 
 /**
  * Created by Lorss on 18-12-5.
  */
-class ForecastDataMapper {
+class ServerDataMapper {
 
     fun convertFromDataModel(forecast: ForecastResult): ForecastList {
-        return ForecastList(forecast.city.name, forecast.city.country,
+        return ForecastList(forecast.city.zipCode, forecast.city.id.toString(), forecast.city.name, forecast.city.country,
                 convertForecastListToDomain(forecast.list))
     }
 
@@ -23,14 +21,9 @@ class ForecastDataMapper {
     }
 
     private fun convertForecastItemToDomain(forecast: Forecast): ModelForecast {
-        return ModelForecast(convertDate(forecast.dt),
+        return ModelForecast(forecast.dt.convertDate(),
                 forecast.weather[0].description, forecast.temp.max.toInt(),
                 forecast.temp.min.toInt(), generateIconUrl(forecast.weather[0].icon))
-    }
-
-    private fun convertDate(date: Long): String {
-        val df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
-        return df.format(date * 1000)
     }
 
     private fun generateIconUrl(iconCode: String): String = "http://openweathermap.org/img/w/$iconCode.png"
