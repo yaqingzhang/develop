@@ -12,6 +12,14 @@ import java.util.*
 val View.ctx: Context
     get() = context
 
+fun View.slideExit() {
+    if (translationY == 0f) animate().translationY(-height.toFloat())
+}
+
+fun View.slideEnter() {
+    if (translationY < 0f) animate().translationY(0f)
+}
+
 fun Context.color(res: Int): Int = ContextCompat.getColor(this, res)
 
 val df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
