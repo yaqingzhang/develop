@@ -1,6 +1,7 @@
 package com.runningmessage.weather.utils
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.view.View
 import java.text.DateFormat
 import java.util.*
@@ -11,6 +12,7 @@ import java.util.*
 val View.ctx: Context
     get() = context
 
+fun Context.color(res: Int): Int = ContextCompat.getColor(this, res)
 
 val df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
 

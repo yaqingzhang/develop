@@ -1,10 +1,11 @@
-package com.runningmessage.weather
+package com.runningmessage.weather.ui.activities
 
 import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.runningmessage.weather.R
 import com.runningmessage.weather.domain.model.Forecast
 import com.runningmessage.weather.domain.model.ForecastList
 import com.runningmessage.weather.utils.ctx

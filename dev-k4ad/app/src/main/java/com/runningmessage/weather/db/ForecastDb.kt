@@ -11,7 +11,6 @@ import org.jetbrains.anko.db.MapRowParser
 import org.jetbrains.anko.db.SelectQueryBuilder
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
-import java.util.*
 
 /**
  * Created by Lorss on 18-12-17.
@@ -19,6 +18,14 @@ import java.util.*
 class ForecastDb(
         private val forecastDbHelper: ForecastDbHelper = ForecastDbHelper.instance
         , private val dataMapper: DbDataMapper = DbDataMapper()) : ForecastDataSource {
+
+    override fun requestDayForecast(id: Long): Forecast? = forecastDbHelper.use {
+
+        val forecast = select(DayForecastTable.NAME).byId(id).parseOpt {
+            DayForecast(HashMap(it))
+        }
+        if (forecast != null) dataMapper.convertDayToDomain(forecast) else null
+    }
 
 
     override fun requestForecastByZipCode(zipCode: Long, date: Long) = forecastDbHelper.use {
@@ -62,8 +69,8 @@ class DbDataMapper {
         ForecastList(zipCode, _id.toString(), city, country, daily)
     }
 
-    private fun convertDayToDomain(dayForecast: DayForecast) = with(dayForecast) {
-        Forecast(date.convertDate(), description, high, low, iconUrl)
+    fun convertDayToDomain(dayForecast: DayForecast) = with(dayForecast) {
+        Forecast(_id, (date * 1000).convertDate(), description, high, low, iconUrl)
     }
 
     fun convertFromDomain(forecastList: ForecastList) = with(forecastList) {
@@ -86,6 +93,8 @@ private fun <T : Any> SelectQueryBuilder.parseOpt(parser: (Map<String, Any>) -> 
         parseOpt(object : MapRowParser<T> {
             override fun parseRow(columns: Map<String, Any>) = parser(columns)
         })
+
+private fun SelectQueryBuilder.byId(id: Long): SelectQueryBuilder = whereSimple("_id = ?", id.toString())
 
 fun SQLiteDatabase.clear(tableName: String) {
     execSQL("delete from $tableName")

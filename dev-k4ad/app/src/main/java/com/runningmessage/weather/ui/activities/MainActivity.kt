@@ -1,4 +1,4 @@
-package com.runningmessage.weather
+package com.runningmessage.weather.ui.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -6,11 +6,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
+import com.runningmessage.weather.R
 import com.runningmessage.weather.domain.RequestForecastCommand
 import com.runningmessage.weather.utils.anko.uiThreadDelayed
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.async
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +42,10 @@ class MainActivity : AppCompatActivity() {
                     button.clearAnimation()
                     if (items != null) {
                         forecast_list.adapter = ForecastListAdapter(items) { item ->
-                            toast(item.date)
+                            startActivity<DetailActivity>(
+                                    DetailActivity.ID to item.id,
+                                    DetailActivity.CITY_NAME to items.city
+                            )
                         }
                     }
                 }

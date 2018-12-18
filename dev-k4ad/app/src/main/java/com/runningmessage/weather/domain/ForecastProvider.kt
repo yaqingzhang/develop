@@ -9,13 +9,19 @@ import com.runningmessage.weather.domain.model.ForecastList
 class ForecastProvider(private val sources: List<ForecastDataSource> = SOURCES) {
 
 
-    fun requestByZipCode(zipCode: Long, days: Int): ForecastList = sources.firstResult {
-        requestSource(it, days, zipCode)
+    fun requestByZipCode(zipCode: Long, days: Int): ForecastList = requestToSources {
+        requestForecast(it, days, zipCode)
     }
 
-    private fun requestSource(source: ForecastDataSource, days: Int, zipCode: Long): ForecastList? {
+    fun requestForecast(id: Long) = requestToSources {
+        it.requestDayForecast(id)
+    }
 
-        val res = source.requestForecastByZipCode(zipCode, yesterdayTimeSpan())
+    private fun <T : Any> requestToSources(f: (ForecastDataSource) -> T?): T = sources.firstResult { f(it) }
+
+    private fun requestForecast(source: ForecastDataSource, days: Int, zipCode: Long): ForecastList? {
+
+        val res = source.requestForecastByZipCode(zipCode, minTimeSpan() / 1000)
 
         return if (res != null && res.size() >= days) res else null
     }
@@ -24,9 +30,11 @@ class ForecastProvider(private val sources: List<ForecastDataSource> = SOURCES) 
 
     private fun yesterdayTimeSpan() = (System.currentTimeMillis() / DAY_IN_MILLIS - 1) * DAY_IN_MILLIS
 
+    private fun minTimeSpan() = 0L
+
     companion object {
 
-        val DAY_IN_MILLIS = 1000 * 60 * 60 * 24
+        const val DAY_IN_MILLIS = 1000 * 60 * 60 * 24
         val SOURCES = listOf(ForecastDb(), ForecastServer())
     }
 

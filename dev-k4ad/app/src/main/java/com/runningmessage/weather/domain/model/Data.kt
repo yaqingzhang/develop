@@ -10,4 +10,4 @@ data class ForecastList(val zipCode: Long, val id: String, val city: String, val
     operator fun get(i: Int): Forecast = dailyForecast[i]
 }
 
-data class Forecast(val date: String, val description: String, val high: Int, val low: Int, val iconUrl: String)
+data class Forecast(val id: Long, val date: String, val description: String, val high: Int, val low: Int, val iconUrl: String)
