@@ -48,9 +48,13 @@ interface ToolbarManager {
         toolbar.setNavigationOnClickListener { up() }
     }
 
-    fun createUpDrawable() = with(DrawerArrowDrawable(toolbar.ctx)) {
+//    fun createUpDrawable() = with(DrawerArrowDrawable(toolbar.ctx)) {
+//        progress = 1f
+//        this
+//    }
+
+    fun createUpDrawable() = DrawerArrowDrawable(toolbar.ctx).apply {
         progress = 1f
-        this
     }
 
     fun attachToScroll(recyclerView: RecyclerView) {
