@@ -40,10 +40,14 @@ class MainActivity : AppCompatActivity(), ToolbarManager {
             async {
                 val start = System.currentTimeMillis()
                 uiThread {
-                    val anim = RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, .5f, Animation.RELATIVE_TO_SELF, .5f)
-                    anim.duration = 1000
-                    anim.interpolator = AccelerateInterpolator()
-                    anim.repeatCount = Animation.INFINITE
+                    val anim = RotateAnimation(0f, 360f
+                            , Animation.RELATIVE_TO_SELF, .5f
+                            , Animation.RELATIVE_TO_SELF, .5f).apply {
+                        duration = 1000
+                        interpolator = AccelerateInterpolator()
+                        repeatCount = Animation.INFINITE
+                    }
+
                     button.startAnimation(anim)
                 }
                 val items = RequestForecastCommand(94043).execute()
