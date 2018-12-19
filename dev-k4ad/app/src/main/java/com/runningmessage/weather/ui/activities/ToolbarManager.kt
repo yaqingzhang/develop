@@ -1,6 +1,5 @@
 package com.runningmessage.weather.ui.activities
 
-import android.content.Intent
 import android.support.v7.graphics.drawable.DrawerArrowDrawable
 import android.support.v7.widget.RecyclerView
 import com.runningmessage.weather.App
@@ -8,6 +7,7 @@ import com.runningmessage.weather.R
 import com.runningmessage.weather.utils.ctx
 import com.runningmessage.weather.utils.slideEnter
 import com.runningmessage.weather.utils.slideExit
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
@@ -36,10 +36,7 @@ interface ToolbarManager {
 
             when (it.itemId) {
                 R.id.menu_setting -> {
-                    val intent = Intent(toolbar.ctx, SettingActivity::class.java).apply {
-
-                    }
-                    toolbar.ctx.startActivity(intent)
+                    toolbar.ctx.startActivity<SettingActivity>()
                 }
 
                 else -> App.instance.toast("Unknown option")

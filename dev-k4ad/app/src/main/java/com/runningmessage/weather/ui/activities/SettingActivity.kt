@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.runningmessage.weather.R
+import com.runningmessage.weather.utils.DelegatesExt
+import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 /**
@@ -12,10 +14,19 @@ import kotlinx.android.synthetic.main.toolbar.*
 class SettingActivity : AppCompatActivity() {
 
 
+    companion object {
+        const val ZIP_CODE = "zipCode"
+        const val DEFAULT_ZIP = 94043L
+    }
+
+    var zipCode: Long by DelegatesExt.preference(this, ZIP_CODE, DEFAULT_ZIP)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_setting)
+
+        cityCode.setText(zipCode.toString())
 
         setSupportActionBar(toolbar)
 
@@ -31,4 +42,12 @@ class SettingActivity : AppCompatActivity() {
             else -> false
         }
     } ?: false
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        try {
+            zipCode = cityCode.text.toString().toLong()
+        } catch (ignored: Exception) {
+        }
+    }
 }

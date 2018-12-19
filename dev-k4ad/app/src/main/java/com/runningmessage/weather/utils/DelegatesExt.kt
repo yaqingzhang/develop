@@ -1,5 +1,7 @@
 package com.runningmessage.weather.utils
 
+import android.content.Context
+import com.runningmessage.weather.domain.sp.Preference
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -9,6 +11,8 @@ import kotlin.reflect.KProperty
 object DelegatesExt {
 
     fun <T> notNullSingleValue(): ReadWriteProperty<Any?, T> = NotNullSingleValueVar()
+
+    fun <T : Any> preference(context: Context, name: String, default: T) = Preference(context, name, default)
 }
 
 class NotNullSingleValueVar<T> : ReadWriteProperty<Any?, T> {

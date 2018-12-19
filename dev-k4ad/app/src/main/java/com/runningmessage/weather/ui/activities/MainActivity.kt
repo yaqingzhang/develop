@@ -9,6 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import com.runningmessage.weather.R
 import com.runningmessage.weather.domain.RequestForecastCommand
+import com.runningmessage.weather.utils.DelegatesExt
 import com.runningmessage.weather.utils.anko.uiThreadDelayed
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.async
@@ -17,6 +18,10 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity(), ToolbarManager {
+
+    var zipCode: Long by DelegatesExt.preference(this, SettingActivity.ZIP_CODE, SettingActivity.DEFAULT_ZIP)
+    var requestingZipCoe: Long = -1L
+    var showZipCoe: Long = -1L
 
     override val toolbar: Toolbar by lazy {
         find<Toolbar>(R.id.toolbar)
@@ -37,7 +42,26 @@ class MainActivity : AppCompatActivity(), ToolbarManager {
 
 
         button.setOnClickListener {
+            loadForecast()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (zipCode != showZipCoe) {
+            loadForecast()
+        }
+    }
+
+    private fun loadForecast() =
             async {
+
+                val requestZipCode = zipCode
+
+                if (requestingZipCoe == requestZipCode) return@async
+
+                requestingZipCoe = requestZipCode
+
                 val start = System.currentTimeMillis()
                 uiThread {
                     val anim = RotateAnimation(0f, 360f
@@ -50,13 +74,15 @@ class MainActivity : AppCompatActivity(), ToolbarManager {
 
                     button.startAnimation(anim)
                 }
-                val items = RequestForecastCommand(94043).execute()
+                val items = RequestForecastCommand(requestZipCode).execute()
 
                 val end = System.currentTimeMillis()
                 uiThreadDelayed(LOADING_TIME_MIN - (end - start)) {
                     button.clearAnimation()
                     if (items != null) {
 
+                        requestingZipCoe = -1L
+                        showZipCoe = requestZipCode
 
                         toolbarTitle = "${items.city}(${items.country})"
 
@@ -69,6 +95,5 @@ class MainActivity : AppCompatActivity(), ToolbarManager {
                     }
                 }
             }
-        }
-    }
+
 }
