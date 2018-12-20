@@ -11,11 +11,15 @@ import android.widget.TextView
 import com.runningmessage.kotref.kotlin.coroutines.*
 import com.runningmessage.kotref.kotlin.overview.Feature0101
 import com.runningmessage.kotref.kotlin.overview.Feature0102
+import com.runningmessage.kotref.kotlin.overview.Feature0103
 import com.runningmessage.kotref.kotlin.overview.Multiplatform
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
+import kotlin.contracts.ExperimentalContracts
 
 class MainActivity : AppCompatActivity() {
 
@@ -93,6 +97,9 @@ class MainActivity : AppCompatActivity() {
     class PlaceholderFragment : Fragment() {
 
 
+        @ExperimentalCoroutinesApi
+        @ObsoleteCoroutinesApi
+        @ExperimentalContracts
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
             val rootView = inflater.inflate(R.layout.fragment_main, container, false)
@@ -143,6 +150,9 @@ class MainActivity : AppCompatActivity() {
 
         companion object {
 
+            @ExperimentalCoroutinesApi
+            @ObsoleteCoroutinesApi
+            @ExperimentalContracts
             val mapList: ArrayList<LinkedHashMap<String, () -> Any>>
                 get() {
 
@@ -152,6 +162,9 @@ class MainActivity : AppCompatActivity() {
 
                     map0["Feature0102.Companion::t01"] = Feature0102.Companion::t01
                     map0["Feature0102.Companion::t02"] = Feature0102.Companion::t02
+
+                    map0["Feature0103.Companion::t01"] = Feature0103.Companion::t01
+                    map0["Feature0103.Companion::t02"] = Feature0103.Companion::t02
 
                     val map1 = LinkedHashMap<String, () -> Any>()
 
