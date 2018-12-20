@@ -183,5 +183,10 @@ class Feature0101 {
 
         data class Model(val id: Int = 1, val name: String)
 
+        //javax.scripting 支持 其API允许在运行时求值代码段
+
+        //kotlin.reflect.full
+
+        //TODO JavaScript
     }
 }
