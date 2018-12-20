@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.runningmessage.kotref.kotlin.coroutines.*
 import com.runningmessage.kotref.kotlin.overview.Feature0101
+import com.runningmessage.kotref.kotlin.overview.Feature0102
 import com.runningmessage.kotref.kotlin.overview.Multiplatform
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
@@ -148,6 +149,9 @@ class MainActivity : AppCompatActivity() {
                     val map0 = LinkedHashMap<String, () -> Any>()
                     map0["Feature0101.Companion::testGroupingBy"] = Feature0101.Companion::testGroupingBy
                     map0["Multiplatform.Companion::tConstructor"] = Multiplatform.Companion::tConstructor
+
+                    map0["Feature0102.Companion::t01"] = Feature0102.Companion::t01
+                    map0["Feature0102.Companion::t02"] = Feature0102.Companion::t02
 
                     val map1 = LinkedHashMap<String, () -> Any>()
 
