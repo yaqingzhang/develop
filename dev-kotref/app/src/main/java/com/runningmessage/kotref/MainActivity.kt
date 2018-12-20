@@ -9,6 +9,8 @@ import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.runningmessage.kotref.kotlin.coroutines.*
+import com.runningmessage.kotref.kotlin.overview.Feature0101
+import com.runningmessage.kotref.kotlin.overview.Multiplatform
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import org.jetbrains.anko.doAsync
@@ -143,6 +145,10 @@ class MainActivity : AppCompatActivity() {
             val mapList: ArrayList<LinkedHashMap<String, () -> Any>>
                 get() {
 
+                    val map0 = LinkedHashMap<String, () -> Any>()
+                    map0["Feature0101.Companion::testGroupingBy"] = Feature0101.Companion::testGroupingBy
+                    map0["Multiplatform.Companion::tConstructor"] = Multiplatform.Companion::tConstructor
+
                     val map1 = LinkedHashMap<String, () -> Any>()
 
                     map1["Basic.Companion::t01"] = Basic.Companion::t01
@@ -226,6 +232,7 @@ class MainActivity : AppCompatActivity() {
 //                    map1["SMSConcurrency.Companion.t19"] = SMSConcurrency.Companion::t19
 
                     val list = ArrayList<LinkedHashMap<String, () -> Any>>()
+                    list.add(map0)
                     list.add(map1)
                     return list
                 }
