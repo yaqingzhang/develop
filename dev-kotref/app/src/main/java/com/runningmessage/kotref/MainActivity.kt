@@ -165,6 +165,10 @@ class MainActivity : AppCompatActivity() {
 
                     map0["Feature0103.Companion::t01"] = Feature0103.Companion::t01
                     map0["Feature0103.Companion::t02"] = Feature0103.Companion::t02
+                    map0["Feature0103.Companion::t03"] = Feature0103.Companion::t03
+                    map0["Feature0103.Companion::t04"] = Feature0103.Companion::t04
+                    map0["Feature0103.Companion::t05"] = Feature0103.Companion::t05
+                    map0["Feature0103.Companion::t06"] = Feature0103.Companion::t06
 
                     val map1 = LinkedHashMap<String, () -> Any>()
 

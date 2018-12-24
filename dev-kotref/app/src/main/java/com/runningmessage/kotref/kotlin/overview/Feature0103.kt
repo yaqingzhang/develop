@@ -107,6 +107,87 @@ class Feature0103 {
         //多平台随机数
 
         // isNullOrEmpty 与 orEmpty
+
+        // 非空数组间拷贝元素
+        // ==================== Code Start =============
+        /**拷贝数组*/
+        fun t04() = wrap {
+
+            runBlocking {
+                val sourceArr = arrayOf("k", "o", "t", "l", "i", "n")
+                val targetArr = sourceArr.copyInto(arrayOfNulls<String>(6),
+                        3, startIndex = 3, endIndex = 6)
+                mPrintln(targetArr.contentToString())
+                sourceArr.copyInto(targetArr, startIndex = 0, endIndex = 3)
+                mPrintln(targetArr.contentToString())
+
+            }
+            /**[t04]*/
+        }
+
+        // 非空数组间拷贝元素
+        // ==================== Code End =============
+
+        // associateWith
+        // ==================== Code Start =============
+        /**associateWith*/
+        fun t05() = wrap {
+
+            runBlocking {
+                val keys = 'a'..'f'
+
+                val map = keys.associateWith {
+                    it.toString().repeat(5).capitalize()
+                }
+
+                map.forEach {
+                    mPrintln(it)
+                }
+            }
+            /**[t05]*/
+        }
+
+        // associateWith
+        // ==================== Code End =============
+
+        // ifEmpty   ifBlank
+        // ==================== Code Start =============
+        /**ifEmpty ifBlank: 判断String 是否全为空格*/
+        fun t06() = wrap {
+
+            runBlocking {
+                printAllUp(listOf("foo", "Bar"))
+                printAllUp(listOf("FOO", "BAR"))
+            }
+            /**[t06]*/
+        }
+
+        fun StringBuilder.printAllUp(data: List<String>) {
+            val result = data
+                    .filter { it.all { c -> c.isUpperCase() } }
+                    .ifEmpty { listOf("<no uppercase>") }
+            result.forEach { mPrintln(it) }
+        }
+
+        // ifEmpty   ifBlank
+        // ==================== Code End =============
+
+        //发射中的密封类 KClass.sealedSubclasses 用于列出所有密封类的子类型
+
+        //微小的改变
+        //Boolean	 	类型现在支持伴生对象。
+        //Any?.hashCode()	 	扩展函数会在	 	null	 	的时候返回	0。
+        //Char	 	类型现在提供了	 	MIN_VALUE	 / 	MAX_VALUE	 	常量。
+        //SIZE_BYTES	 	和	 	SIZE_BITS	 	会作为原生类型伴生对象常量。
+
+        //IDE 中的代码风格支持
+
+        //kotlinx.serialization  实现性
+
+        //脚本更新
+
+        //草稿文件支持  .kts 可以在编译器里直接运行和获取计算结果
+        
     }
 }
 
