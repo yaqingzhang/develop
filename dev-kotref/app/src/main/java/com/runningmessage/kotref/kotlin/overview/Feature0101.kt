@@ -51,8 +51,10 @@ class Feature0101 {
 
         class ResourceLoader<T>(id: ResourceID<T>) {
 
-            operator fun provideDelegate(thisRef: MyUI
-                                         , property: KProperty<*>)
+            operator fun provideDelegate(
+                thisRef: MyUI
+                , property: KProperty<*>
+            )
                     : ReadOnlyProperty<MyUI, T> {
                 checkProperty(thisRef, property)
 

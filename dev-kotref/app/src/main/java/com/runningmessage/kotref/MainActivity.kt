@@ -9,6 +9,7 @@ import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.runningmessage.kotref.kotlin.coroutines.*
+import com.runningmessage.kotref.kotlin.discuss.Discuss
 import com.runningmessage.kotref.kotlin.overview.Feature0101
 import com.runningmessage.kotref.kotlin.overview.Feature0102
 import com.runningmessage.kotref.kotlin.overview.Feature0103
@@ -51,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         }*/
 
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -100,8 +100,11 @@ class MainActivity : AppCompatActivity() {
         @ExperimentalCoroutinesApi
         @ObsoleteCoroutinesApi
         @ExperimentalContracts
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                                  savedInstanceState: Bundle?): View? {
+        override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
             val rootView = inflater.inflate(R.layout.fragment_main, container, false)
             val index = arguments?.getInt(ARG_SECTION_NUMBER) ?: 1
             rootView.section_label.text = getString(R.string.section_format, index)
@@ -109,7 +112,10 @@ class MainActivity : AppCompatActivity() {
 
             if (mapList.size >= index && index > 0) {
                 for ((name, apply) in mapList[index - 1]) {
-                    if (rootView.text_container is ViewGroup) rootView.text_container.addButton(name, apply)
+                    if (rootView.text_container is ViewGroup) rootView.text_container.addButton(
+                        name,
+                        apply
+                    )
                 }
             }
             return rootView
@@ -120,9 +126,12 @@ class MainActivity : AppCompatActivity() {
             btn.gravity = Gravity.CENTER
             btn.setBackgroundResource(R.drawable.kt_button_bg)
             btn.text = text
-            btn.setMinHeight(90)
+            btn.minHeight = 90
             if (this is LinearLayout) {
-                val lp = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                val lp = LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
                 lp.gravity = Gravity.CENTER_HORIZONTAL
                 lp.bottomMargin = 20
                 btn.layoutParams = lp
@@ -156,9 +165,12 @@ class MainActivity : AppCompatActivity() {
             val mapList: ArrayList<LinkedHashMap<String, () -> Any>>
                 get() {
 
+                    /**OverView*/
                     val map0 = LinkedHashMap<String, () -> Any>()
-                    map0["Feature0101.Companion::testGroupingBy"] = Feature0101.Companion::testGroupingBy
-                    map0["Multiplatform.Companion::tConstructor"] = Multiplatform.Companion::tConstructor
+                    map0["Feature0101.Companion::testGroupingBy"] =
+                            Feature0101.Companion::testGroupingBy
+                    map0["Multiplatform.Companion::tConstructor"] =
+                            Multiplatform.Companion::tConstructor
 
                     map0["Feature0102.Companion::t01"] = Feature0102.Companion::t01
                     map0["Feature0102.Companion::t02"] = Feature0102.Companion::t02
@@ -170,6 +182,14 @@ class MainActivity : AppCompatActivity() {
                     map0["Feature0103.Companion::t05"] = Feature0103.Companion::t05
                     map0["Feature0103.Companion::t06"] = Feature0103.Companion::t06
 
+                    map0["Discuss.Companion::t01"] = Discuss.Companion::t01
+                    map0["Discuss.Companion::t02"] = Discuss.Companion::t02
+//                    map0["Discuss.Companion::t03"] = Discuss.Companion::t03
+//                    map0["Discuss.Companion::t04"] = Discuss.Companion::t04
+//                    map0["Discuss.Companion::t05"] = Discuss.Companion::t05
+//                    map0["Discuss.Companion::t06"] = Discuss.Companion::t06
+
+                    /**Coroutines*/
                     val map1 = LinkedHashMap<String, () -> Any>()
 
                     map1["Basic.Companion::t01"] = Basic.Companion::t01
@@ -262,7 +282,7 @@ class MainActivity : AppCompatActivity() {
              * The fragment argument representing the section number for this
              * fragment.
              */
-            private val ARG_SECTION_NUMBER = "section_number"
+            private const val ARG_SECTION_NUMBER = "section_number"
 
             /**
              * Returns a new instance of this fragment for the given section
