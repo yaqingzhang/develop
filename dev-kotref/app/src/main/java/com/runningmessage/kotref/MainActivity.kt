@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.runningmessage.kotref.kotlin.`class`.ClassAndInheritance
+import com.runningmessage.kotref.kotlin.basic.ReturnsAndJumps
 import com.runningmessage.kotref.kotlin.coroutines.*
 import com.runningmessage.kotref.kotlin.discuss.Discuss
 import com.runningmessage.kotref.kotlin.overview.Feature0101
@@ -166,98 +168,113 @@ class MainActivity : AppCompatActivity() {
                 get() {
 
                     /**OverView*/
-                    val map0 = LinkedHashMap<String, () -> Any>()
-                    map0["Feature0101.Companion::testGroupingBy"] =
-                            Feature0101.Companion::testGroupingBy
-                    map0["Multiplatform.Companion::tConstructor"] =
+                    val map00 = LinkedHashMap<String, () -> Any>()
+                    map00["Multiplatform.Companion::tConstructor"] =
                             Multiplatform.Companion::tConstructor
+                    map00["Feature0101.Companion::testGroupingBy"] =
+                            Feature0101.Companion::testGroupingBy
 
-                    map0["Feature0102.Companion::t01"] = Feature0102.Companion::t01
-                    map0["Feature0102.Companion::t02"] = Feature0102.Companion::t02
+                    map00["Feature0102.Companion::t01"] = Feature0102.Companion::t01
+                    map00["Feature0102.Companion::t02"] = Feature0102.Companion::t02
 
-                    map0["Feature0103.Companion::t01"] = Feature0103.Companion::t01
-                    map0["Feature0103.Companion::t02"] = Feature0103.Companion::t02
-                    map0["Feature0103.Companion::t03"] = Feature0103.Companion::t03
-                    map0["Feature0103.Companion::t04"] = Feature0103.Companion::t04
-                    map0["Feature0103.Companion::t05"] = Feature0103.Companion::t05
-                    map0["Feature0103.Companion::t06"] = Feature0103.Companion::t06
+                    map00["Feature0103.Companion::t01"] = Feature0103.Companion::t01
+                    map00["Feature0103.Companion::t02"] = Feature0103.Companion::t02
+                    map00["Feature0103.Companion::t03"] = Feature0103.Companion::t03
+                    map00["Feature0103.Companion::t04"] = Feature0103.Companion::t04
+                    map00["Feature0103.Companion::t05"] = Feature0103.Companion::t05
+                    map00["Feature0103.Companion::t06"] = Feature0103.Companion::t06
 
-                    map0["Discuss.Companion::t01"] = Discuss.Companion::t01
-                    map0["Discuss.Companion::t02"] = Discuss.Companion::t02
-//                    map0["Discuss.Companion::t03"] = Discuss.Companion::t03
-//                    map0["Discuss.Companion::t04"] = Discuss.Companion::t04
-//                    map0["Discuss.Companion::t05"] = Discuss.Companion::t05
-//                    map0["Discuss.Companion::t06"] = Discuss.Companion::t06
+                    map00["Discuss.Companion::t01"] = Discuss.Companion::t01
+                    map00["Discuss.Companion::t02"] = Discuss.Companion::t02
+
+                    /**Basic*/
+                    val map01 = LinkedHashMap<String, () -> Any>()
+                    map01["ReturnsAndJumps.Companion::t01"] = ReturnsAndJumps.Companion::t01
+//                    map01["ReturnsAndJumps.Companion::t02"] = ReturnsAndJumps.Companion::t02
+//                    map01["ReturnsAndJumps.Companion::t03"] = ReturnsAndJumps.Companion::t03
+//                    map01["ReturnsAndJumps.Companion::t04"] = ReturnsAndJumps.Companion::t04
+//                    map01["ReturnsAndJumps.Companion::t05"] = ReturnsAndJumps.Companion::t05
+//                    map01["ReturnsAndJumps.Companion::t06"] = ReturnsAndJumps.Companion::t06
+
+                    /**Classes and Objects*/
+                    val map02 = LinkedHashMap<String, () -> Any>()
+                    map02["ClassAndInheritance.Companion::t01"] =
+                            ClassAndInheritance.Companion::t01
+//                    map02["ClassAndInheritance.Companion::t02"] = ClassAndInheritance.Companion::t02
+//                    map02["ClassAndInheritance.Companion::t03"] = ClassAndInheritance.Companion::t03
+//                    map02["ClassAndInheritance.Companion::t04"] = ClassAndInheritance.Companion::t04
+//                    map02["ClassAndInheritance.Companion::t05"] = ClassAndInheritance.Companion::t05
+//                    map02["ClassAndInheritance.Companion::t06"] = ClassAndInheritance.Companion::t06
 
                     /**Coroutines*/
-                    val map1 = LinkedHashMap<String, () -> Any>()
+                    val map10 = LinkedHashMap<String, () -> Any>()
 
-                    map1["Basic.Companion::t01"] = Basic.Companion::t01
-                    map1["Basic.Companion::t02"] = Basic.Companion::t02
-                    map1["Basic.Companion::t03"] = Basic.Companion::t03
-                    map1["Basic.Companion::t04"] = Basic.Companion::t04
-                    map1["Basic.Companion::t05"] = Basic.Companion::t05
-                    map1["Basic.Companion::t06"] = Basic.Companion::t06
+                    map10["Basic.Companion::t01"] = Basic.Companion::t01
+                    map10["Basic.Companion::t02"] = Basic.Companion::t02
+                    map10["Basic.Companion::t03"] = Basic.Companion::t03
+                    map10["Basic.Companion::t04"] = Basic.Companion::t04
+                    map10["Basic.Companion::t05"] = Basic.Companion::t05
+                    map10["Basic.Companion::t06"] = Basic.Companion::t06
 
-                    map1["CancelTimeout.Companion::t01"] = CancelTimeout.Companion::t01
-                    map1["CancelTimeout.Companion::t02"] = CancelTimeout.Companion::t02
-                    map1["CancelTimeout.Companion::t03"] = CancelTimeout.Companion::t03
-                    map1["CancelTimeout.Companion::t04"] = CancelTimeout.Companion::t04
-                    map1["CancelTimeout.Companion::t05"] = CancelTimeout.Companion::t05
+                    map10["CancelTimeout.Companion::t01"] = CancelTimeout.Companion::t01
+                    map10["CancelTimeout.Companion::t02"] = CancelTimeout.Companion::t02
+                    map10["CancelTimeout.Companion::t03"] = CancelTimeout.Companion::t03
+                    map10["CancelTimeout.Companion::t04"] = CancelTimeout.Companion::t04
+                    map10["CancelTimeout.Companion::t05"] = CancelTimeout.Companion::t05
 
-                    map1["Channels.Companion.t01"] = Channels.Companion::t01
-                    map1["Channels.Companion.t02"] = Channels.Companion::t02
-                    map1["Channels.Companion.t03"] = Channels.Companion::t03
-                    map1["Channels.Companion.t04"] = Channels.Companion::t04
-                    map1["Channels.Companion.t05"] = Channels.Companion::t05
-                    map1["Channels.Companion.t06"] = Channels.Companion::t06
-                    map1["Channels.Companion.t07"] = Channels.Companion::t07
-                    map1["Channels.Companion.t08"] = Channels.Companion::t08
-                    map1["Channels.Companion.t09"] = Channels.Companion::t09
-                    map1["Channels.Companion.t10"] = Channels.Companion::t10
+                    map10["Channels.Companion.t01"] = Channels.Companion::t01
+                    map10["Channels.Companion.t02"] = Channels.Companion::t02
+                    map10["Channels.Companion.t03"] = Channels.Companion::t03
+                    map10["Channels.Companion.t04"] = Channels.Companion::t04
+                    map10["Channels.Companion.t05"] = Channels.Companion::t05
+                    map10["Channels.Companion.t06"] = Channels.Companion::t06
+                    map10["Channels.Companion.t07"] = Channels.Companion::t07
+                    map10["Channels.Companion.t08"] = Channels.Companion::t08
+                    map10["Channels.Companion.t09"] = Channels.Companion::t09
+                    map10["Channels.Companion.t10"] = Channels.Companion::t10
 
-                    map1["ComSusFun.Companion.t01"] = ComSusFun.Companion::t01
-                    map1["ComSusFun.Companion.t02"] = ComSusFun.Companion::t02
-                    map1["ComSusFun.Companion.t03"] = ComSusFun.Companion::t03
-                    map1["ComSusFun.Companion.t04"] = ComSusFun.Companion::t04
-                    map1["ComSusFun.Companion.t05"] = ComSusFun.Companion::t05
-                    map1["ComSusFun.Companion.t05"] = ComSusFun.Companion::t05
-                    map1["ComSusFun.Companion.t051"] = ComSusFun.Companion::t051
+                    map10["ComSusFun.Companion.t01"] = ComSusFun.Companion::t01
+                    map10["ComSusFun.Companion.t02"] = ComSusFun.Companion::t02
+                    map10["ComSusFun.Companion.t03"] = ComSusFun.Companion::t03
+                    map10["ComSusFun.Companion.t04"] = ComSusFun.Companion::t04
+                    map10["ComSusFun.Companion.t05"] = ComSusFun.Companion::t05
+                    map10["ComSusFun.Companion.t05"] = ComSusFun.Companion::t05
+                    map10["ComSusFun.Companion.t051"] = ComSusFun.Companion::t051
 
-                    map1["ContextDispatchers.Companion.t01"] = ContextDispatchers.Companion::t01
-                    map1["ContextDispatchers.Companion.t02"] = ContextDispatchers.Companion::t02
-                    map1["ContextDispatchers.Companion.t03"] = ContextDispatchers.Companion::t03
-                    map1["ContextDispatchers.Companion.t04"] = ContextDispatchers.Companion::t04
-                    map1["ContextDispatchers.Companion.t05"] = ContextDispatchers.Companion::t05
-                    map1["ContextDispatchers.Companion.t06"] = ContextDispatchers.Companion::t06
-                    map1["ContextDispatchers.Companion.t07"] = ContextDispatchers.Companion::t07
-                    map1["ContextDispatchers.Companion.t08"] = ContextDispatchers.Companion::t08
-                    map1["ContextDispatchers.Companion.t09"] = ContextDispatchers.Companion::t09
-                    map1["ContextDispatchers.Companion.t10"] = ContextDispatchers.Companion::t10
-                    map1["ContextDispatchers.Companion.t11"] = ContextDispatchers.Companion::t11
+                    map10["ContextDispatchers.Companion.t01"] = ContextDispatchers.Companion::t01
+                    map10["ContextDispatchers.Companion.t02"] = ContextDispatchers.Companion::t02
+                    map10["ContextDispatchers.Companion.t03"] = ContextDispatchers.Companion::t03
+                    map10["ContextDispatchers.Companion.t04"] = ContextDispatchers.Companion::t04
+                    map10["ContextDispatchers.Companion.t05"] = ContextDispatchers.Companion::t05
+                    map10["ContextDispatchers.Companion.t06"] = ContextDispatchers.Companion::t06
+                    map10["ContextDispatchers.Companion.t07"] = ContextDispatchers.Companion::t07
+                    map10["ContextDispatchers.Companion.t08"] = ContextDispatchers.Companion::t08
+                    map10["ContextDispatchers.Companion.t09"] = ContextDispatchers.Companion::t09
+                    map10["ContextDispatchers.Companion.t10"] = ContextDispatchers.Companion::t10
+                    map10["ContextDispatchers.Companion.t11"] = ContextDispatchers.Companion::t11
 
-                    map1["ExceptionHandling.Companion.t01"] = ExceptionHandling.Companion::t01
-                    map1["ExceptionHandling.Companion.t02"] = ExceptionHandling.Companion::t02
-                    map1["ExceptionHandling.Companion.t03"] = ExceptionHandling.Companion::t03
-                    map1["ExceptionHandling.Companion.t031"] = ExceptionHandling.Companion::t031
-                    map1["ExceptionHandling.Companion.t04"] = ExceptionHandling.Companion::t04
-                    map1["ExceptionHandling.Companion.t041"] = ExceptionHandling.Companion::t041
-                    map1["ExceptionHandling.Companion.t05"] = ExceptionHandling.Companion::t05
-                    map1["ExceptionHandling.Companion.t06"] = ExceptionHandling.Companion::t06
-                    map1["ExceptionHandling.Companion.t07"] = ExceptionHandling.Companion::t07
+                    map10["ExceptionHandling.Companion.t01"] = ExceptionHandling.Companion::t01
+                    map10["ExceptionHandling.Companion.t02"] = ExceptionHandling.Companion::t02
+                    map10["ExceptionHandling.Companion.t03"] = ExceptionHandling.Companion::t03
+                    map10["ExceptionHandling.Companion.t031"] = ExceptionHandling.Companion::t031
+                    map10["ExceptionHandling.Companion.t04"] = ExceptionHandling.Companion::t04
+                    map10["ExceptionHandling.Companion.t041"] = ExceptionHandling.Companion::t041
+                    map10["ExceptionHandling.Companion.t05"] = ExceptionHandling.Companion::t05
+                    map10["ExceptionHandling.Companion.t06"] = ExceptionHandling.Companion::t06
+                    map10["ExceptionHandling.Companion.t07"] = ExceptionHandling.Companion::t07
 
-                    map1["Select.Companion.t01"] = Select.Companion::t01
-                    map1["Select.Companion.t02"] = Select.Companion::t02
-                    map1["Select.Companion.t03"] = Select.Companion::t03
-                    map1["Select.Companion.t04"] = Select.Companion::t04
-                    map1["Select.Companion.t05"] = Select.Companion::t05
+                    map10["Select.Companion.t01"] = Select.Companion::t01
+                    map10["Select.Companion.t02"] = Select.Companion::t02
+                    map10["Select.Companion.t03"] = Select.Companion::t03
+                    map10["Select.Companion.t04"] = Select.Companion::t04
+                    map10["Select.Companion.t05"] = Select.Companion::t05
 
-                    map1["SMSConcurrency.Companion.t01"] = SMSConcurrency.Companion::t01
-                    map1["SMSConcurrency.Companion.t02"] = SMSConcurrency.Companion::t02
-                    map1["SMSConcurrency.Companion.t03"] = SMSConcurrency.Companion::t03
-                    map1["SMSConcurrency.Companion.t04"] = SMSConcurrency.Companion::t04
-                    map1["SMSConcurrency.Companion.t05"] = SMSConcurrency.Companion::t05
-                    map1["SMSConcurrency.Companion.t06"] = SMSConcurrency.Companion::t06
+                    map10["SMSConcurrency.Companion.t01"] = SMSConcurrency.Companion::t01
+                    map10["SMSConcurrency.Companion.t02"] = SMSConcurrency.Companion::t02
+                    map10["SMSConcurrency.Companion.t03"] = SMSConcurrency.Companion::t03
+                    map10["SMSConcurrency.Companion.t04"] = SMSConcurrency.Companion::t04
+                    map10["SMSConcurrency.Companion.t05"] = SMSConcurrency.Companion::t05
+                    map10["SMSConcurrency.Companion.t06"] = SMSConcurrency.Companion::t06
 //                    map1["SMSConcurrency.Companion.t07"] = SMSConcurrency.Companion::t07
 //                    map1["SMSConcurrency.Companion.t08"] = SMSConcurrency.Companion::t08
 //                    map1["SMSConcurrency.Companion.t09"] = SMSConcurrency.Companion::t09
@@ -273,8 +290,10 @@ class MainActivity : AppCompatActivity() {
 //                    map1["SMSConcurrency.Companion.t19"] = SMSConcurrency.Companion::t19
 
                     val list = ArrayList<LinkedHashMap<String, () -> Any>>()
-                    list.add(map0)
-                    list.add(map1)
+                    list.add(map00)
+                    list.add(map01)
+                    list.add(map02)
+                    list.add(map10)
                     return list
                 }
 
