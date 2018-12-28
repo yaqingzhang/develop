@@ -75,5 +75,54 @@ class Discuss {
 
         open class WrapGeneric<T>
 
+        /**Wrap-Only class*/
+        fun t04() = wrap {
+
+            runBlocking {
+                BuilderFactory.createBuilder<Test>()
+            }
+            /**[t04]*/
+        }
+
+
     }
+
+
 }
+
+enum class Test
+
+interface BuilderStatus
+
+// Extract an Interface
+interface Builder<E : Enum<E>> {
+    val type: E?
+    val start: Int
+    val finish: Int
+    val status: BuilderStatus?
+}
+
+private class TokenBuilder<E : Enum<E>>(
+    override var type: E?, // declare using var
+    override var start: Int,
+    override var finish: Int,
+    override var status: BuilderStatus?
+) : Builder<E>
+
+
+class BuilderFactory {
+
+    companion object {
+
+        fun <E : Enum<E>> createBuilder(): Builder<E> = object : Builder<E> by TokenBuilder<E>(
+            null,
+            0,
+            0,
+            null
+        ) {}
+    }
+
+}
+
+
+
