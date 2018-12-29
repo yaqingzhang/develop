@@ -20,7 +20,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
+import org.jetbrains.anko.appcompat.v7.buttonBarLayout
+import org.jetbrains.anko.button
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.uiThread
 import kotlin.contracts.ExperimentalContracts
 
@@ -53,6 +56,14 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }*/
 
+    }
+
+    fun testButton(){
+        container.button(""){
+            onClick {
+
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

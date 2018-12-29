@@ -75,7 +75,7 @@ class Feature0101 {
 
         fun <T> bindResource(id: ResourceID<T>): ResourceLoader<T> = ResourceLoader(id)
 
-        class MyUI {
+        open class MyUI {
             val image by bindResource(ResourceID.image_id)
             val text by bindResource(ResourceID.text_id)
         }
