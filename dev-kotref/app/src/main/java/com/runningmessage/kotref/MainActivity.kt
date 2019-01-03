@@ -12,6 +12,7 @@ import com.runningmessage.kotref.kotlin.`class`.ClassAndInheritance
 import com.runningmessage.kotref.kotlin.basic.ReturnsAndJumps
 import com.runningmessage.kotref.kotlin.coroutines.*
 import com.runningmessage.kotref.kotlin.discuss.Discuss
+import com.runningmessage.kotref.kotlin.discuss.Discuss003
 import com.runningmessage.kotref.kotlin.overview.Feature0101
 import com.runningmessage.kotref.kotlin.overview.Feature0102
 import com.runningmessage.kotref.kotlin.overview.Feature0103
@@ -20,10 +21,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
-import org.jetbrains.anko.appcompat.v7.buttonBarLayout
-import org.jetbrains.anko.button
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.uiThread
 import kotlin.contracts.ExperimentalContracts
 
@@ -58,13 +56,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun testButton(){
-        container.button(""){
-            onClick {
-
-            }
-        }
-    }
+//    fun testButton(){
+//        container.button(""){
+//            onClick {
+//
+//            }
+//        }
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -197,6 +195,7 @@ class MainActivity : AppCompatActivity() {
 
                     map00["Discuss.Companion::t01"] = Discuss.Companion::t01
                     map00["Discuss.Companion::t02"] = Discuss.Companion::t02
+                    map00["Discuss003.Companion::test"] = Discuss003.Companion::test
 
                     /**Basic*/
                     val map01 = LinkedHashMap<String, () -> Any>()

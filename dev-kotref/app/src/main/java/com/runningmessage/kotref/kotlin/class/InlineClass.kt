@@ -59,6 +59,12 @@ class InlineClass {
     /** TODO [compute] 将会被表示为 public final void compute-<hashcode>(int x)*/
     // TODO 在 Java 中 - 是一个 无效的 符号,
     // TODO 也就是说在 Java 中不能调用使用内联类作为 形参的函数。 {:.note}
+
+    //内联类与类型别名
+
+    //内联类的实验性状态 TODO
+
+
 }
 
 inline class UInt(val x: Int)
