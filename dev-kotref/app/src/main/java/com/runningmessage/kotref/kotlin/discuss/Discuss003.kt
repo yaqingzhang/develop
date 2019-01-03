@@ -12,6 +12,15 @@ class Discuss003 {
 
         fun test() = wrap {
 
+            val list = listOf<Int>()
+
+            list.indices.forEach { index ->
+                if (index == 2) return@forEach
+
+                val item = list[index]
+
+                // do something for item
+            }
         }
     }
 }
