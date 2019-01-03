@@ -5,7 +5,7 @@ package com.runningmessage.kotref.kotlin.function
  *
  * Created by Lorss on 19-1-3.
  */
-class Function{
+class Function {
 
     companion object {
 
@@ -49,7 +49,6 @@ class Function{
         // 高阶函数和Lambda表达式
 
         // 尾递归函数 TODO tailrec
-
 
 
     }
