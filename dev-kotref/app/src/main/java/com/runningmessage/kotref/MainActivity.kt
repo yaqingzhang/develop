@@ -195,7 +195,8 @@ class MainActivity : AppCompatActivity() {
 
                     map00["Discuss.Companion::t01"] = Discuss.Companion::t01
                     map00["Discuss.Companion::t02"] = Discuss.Companion::t02
-                    map00["Discuss003.Companion::test"] = Discuss003.Companion::test
+                    map00["Discuss003.Companion::t01"] = Discuss003.Companion::t01
+                    map00["Discuss003.Companion::t02"] = Discuss003.Companion::t02
 
                     /**Basic*/
                     val map01 = LinkedHashMap<String, () -> Any>()

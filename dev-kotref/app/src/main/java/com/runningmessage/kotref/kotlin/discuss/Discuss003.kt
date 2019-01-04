@@ -1,5 +1,6 @@
 package com.runningmessage.kotref.kotlin.discuss
 
+import com.runningmessage.kotref.utils.mPrintln
 import com.runningmessage.kotref.utils.wrap
 
 /**
@@ -10,7 +11,7 @@ class Discuss003 {
 
     companion object {
 
-        fun test() = wrap {
+        fun t01() = wrap {
 
             val list = listOf<Int>()
 
@@ -22,5 +23,27 @@ class Discuss003 {
                 // do something for item
             }
         }
+
+
+        fun t02() = wrap {
+
+            for (i in A()) {
+                mPrintln(i)
+            }
+        }
     }
+
 }
+
+class A {
+
+    private var i = 0
+
+    operator fun hasNext() = i < 10
+
+    operator fun next() = i++
+
+
+}
+
+operator fun A.iterator() = this
