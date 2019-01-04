@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.runningmessage.kotref.java.discuss.Discuss001
 import com.runningmessage.kotref.kotlin.`class`.ClassAndInheritance
 import com.runningmessage.kotref.kotlin.basic.ReturnsAndJumps
 import com.runningmessage.kotref.kotlin.coroutines.*
@@ -155,7 +156,7 @@ class MainActivity : AppCompatActivity() {
 //                    val resultText = "$text = $result"
 //                    activity?.runOnUiThread { btn.text = resultText }
 //                }
-
+                click.invoke()
                 /** Using anko*/
                 doAsync {
                     val result = click.invoke().toString()
@@ -197,6 +198,8 @@ class MainActivity : AppCompatActivity() {
                     map00["Discuss.Companion::t02"] = Discuss.Companion::t02
                     map00["Discuss003.Companion::t01"] = Discuss003.Companion::t01
                     map00["Discuss003.Companion::t02"] = Discuss003.Companion::t02
+                    map00["Discuss003.Companion::t04"] = Discuss003.Companion::t04
+                    map00["Discuss001.test"] = Discuss001::test
 
                     /**Basic*/
                     val map01 = LinkedHashMap<String, () -> Any>()

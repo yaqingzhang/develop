@@ -31,6 +31,17 @@ class Discuss003 {
                 mPrintln(i)
             }
         }
+
+        @Throws(Exception::class)
+        fun t03(): Nothing = throw AssertionError()
+
+        fun t04() {
+            try {
+                t03()
+            } catch (e: Throwable) {
+
+            }
+        }
     }
 
 }
