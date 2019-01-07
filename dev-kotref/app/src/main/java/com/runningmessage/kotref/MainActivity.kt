@@ -21,11 +21,16 @@ import com.runningmessage.kotref.kotlin.overview.Multiplatform
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.ObsoleteCoroutinesApi
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import kotlin.contracts.ExperimentalContracts
 
+@ExperimentalCoroutinesApi
+@ObsoleteCoroutinesApi
+@ExperimentalContracts
 class MainActivity : AppCompatActivity() {
 
     /**
@@ -89,6 +94,9 @@ class MainActivity : AppCompatActivity() {
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
+    @ExperimentalCoroutinesApi
+    @ObsoleteCoroutinesApi
+    @ExperimentalContracts
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
@@ -98,8 +106,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun getCount(): Int {
-            // Show 3 total pages.
-            return 3
+            return PlaceholderFragment.mapList.size
         }
     }
 
@@ -156,7 +163,7 @@ class MainActivity : AppCompatActivity() {
 //                    val resultText = "$text = $result"
 //                    activity?.runOnUiThread { btn.text = resultText }
 //                }
-                click.invoke()
+                //click.invoke() TODO m:lorss this line to check whether function will crash or block thread
                 /** Using anko*/
                 doAsync {
                     val result = click.invoke().toString()
@@ -168,6 +175,7 @@ class MainActivity : AppCompatActivity() {
             }
             addView(btn)
         }
+
 
         companion object {
 
