@@ -11,7 +11,7 @@ fun wrap(apply: StringBuilder.() -> Unit): StringBuilder {
     try {
         apply.invoke(sb)
     } catch (e: Exception) {
-        sb.mPrintln(e.toString())
+        sb.mPrintln("#wrap: catch $e")
     } finally {
     }
     return sb

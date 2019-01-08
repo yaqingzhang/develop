@@ -29,7 +29,9 @@ class CancelTimeout {
 
                 delay(1500L)
                 mPrintln("\nmain: I'm tired of waiting!")
+                // 取消该任务
                 job.cancel()
+                // 等待任务执行结束
                 job.join()
                 mPrintln("main: Now I can quit!")
 
@@ -46,6 +48,12 @@ class CancelTimeout {
 
                     var i = 0
 
+                    // 一个执行计算的循环
+                    // 会打印5次直到结束, 因为没有地方检查取消
+                    // 使计算代码可取消 :
+                    // -> 定期调用挂起函数
+                    // -> 显式检查取消状态
+                    /** [CoroutineScope.isActive]*/
                     while (i < 5) {
                         if (System.currentTimeMillis() >= nextPrintTime) {
                             mPrintln("I'm sleeping ${i++} ...")
@@ -57,6 +65,11 @@ class CancelTimeout {
 
                 delay(1300L)
                 mPrintln("main: I'm tired of waiting!")
+                // 协程的取消是协作的
+                // 一段代码必须协作才能被取消
+                // 所有 kotlinx.coroutines 中的挂起函数都是可被取消的
+                // 他们检查协程的取消, 并在取消时抛出 CancellationException
+                // 然而如果协程正在执行计算任务, 并且没有检查取消的话, 那么它是不能被取消的
                 job.cancelAndJoin()
                 mPrintln("main: Now I can quit.")
             }
@@ -81,6 +94,8 @@ class CancelTimeout {
 
                 delay(1500L)
                 mPrintln("\nmain: I'm tired of waiting!")
+                // join 和 cancelJoin 等待了所有的终结动作执行完毕
+                // 因为这时没有调用挂起函数
                 job.cancelAndJoin()
                 mPrintln("main: Now I can quit!")
 
@@ -99,6 +114,7 @@ class CancelTimeout {
                             delay(500L)
                         }
                     } finally {
+                        // 运行不能取消的代码块
                         withContext(NonCancellable) {
                             mPrintln("I'm running finally")
                             delay(1000L)
@@ -121,6 +137,8 @@ class CancelTimeout {
             runBlocking {
 
                 //withTimeoutOrNull not throw Exception but return null
+                //TODO m:lorss analyse below function
+                /** [JobSupport.invokeOnCompletion]*/
                 withTimeout(1300L) {
                     repeat(1000) {
                         mPrintln("I'm sleeping $it ...")
