@@ -14,6 +14,7 @@ import com.runningmessage.kotref.kotlin.basic.ReturnsAndJumps
 import com.runningmessage.kotref.kotlin.coroutines.*
 import com.runningmessage.kotref.kotlin.discuss.Discuss
 import com.runningmessage.kotref.kotlin.discuss.Discuss003
+import com.runningmessage.kotref.kotlin.discuss.Discuss004
 import com.runningmessage.kotref.kotlin.overview.Feature0101
 import com.runningmessage.kotref.kotlin.overview.Feature0102
 import com.runningmessage.kotref.kotlin.overview.Feature0103
@@ -21,9 +22,7 @@ import com.runningmessage.kotref.kotlin.overview.Multiplatform
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.ObsoleteCoroutinesApi
-import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import kotlin.contracts.ExperimentalContracts
@@ -208,6 +207,9 @@ class MainActivity : AppCompatActivity() {
                     map00["Discuss003.Companion::t02"] = Discuss003.Companion::t02
                     map00["Discuss003.Companion::t04"] = Discuss003.Companion::t04
                     map00["Discuss001.test"] = Discuss001::test
+                    map00["Discuss004.Companion::testContext1"] = Discuss004.Companion::testContext1
+                    map00["Discuss004.Companion::testContext2"] = Discuss004.Companion::testContext2
+                    map00["Discuss004.Companion::testContext3"] = Discuss004.Companion::testContext3
 
                     /**Basic*/
                     val map01 = LinkedHashMap<String, () -> Any>()
