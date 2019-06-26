@@ -172,7 +172,7 @@ class Feature0103 {
         // ifEmpty   ifBlank
         // ==================== Code End =============
 
-        //发射中的密封类 KClass.sealedSubclasses 用于列出所有密封类的子类型
+        //反射中的密封类 KClass.sealedSubclasses 用于列出所有密封类的子类型
 
         //微小的改变
         //Boolean	 	类型现在支持伴生对象。
@@ -194,7 +194,7 @@ class Feature0103 {
 @ExperimentalContracts
 fun require(condition: Boolean) {
     // 这是一种语法格式, 告诉编译器:
-    // "如果这个函数成功返回, 那么传入的'condition' 为 "
+    // "如果这个函数成功返回, 那么传入的'condition' 为 "true"
     contract { returns() implies condition }
     if (!condition) throw IllegalStateException("")
 }
