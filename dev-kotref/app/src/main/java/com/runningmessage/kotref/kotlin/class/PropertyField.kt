@@ -93,7 +93,7 @@ class PropertyField {
     }
     // TODO 把属性存储在映射中
     /**
-     * [Map.getValue],
+     * inline MutableMap.getValue,
      * inline MutableMap.setValue  from kotlin/collections/MapAccessors.kt
      * */
     var varByMap by HashMap<String, String>().apply {
@@ -102,6 +102,7 @@ class PropertyField {
             this@PropertyField::varByMap,
             ""
         )
+        getValue(this@PropertyField, this@PropertyField::varByMap)
     }
 
     // 局部属性委托
