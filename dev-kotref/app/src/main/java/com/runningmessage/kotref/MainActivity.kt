@@ -186,6 +186,8 @@ class MainActivity : AppCompatActivity() {
 
                     /**OverView*/
                     val map00 = LinkedHashMap<String, () -> Any>()
+                    map00["Multiplatform.Companion::tString"] =
+                            Multiplatform.Companion::tString
                     map00["Multiplatform.Companion::tConstructor"] =
                             Multiplatform.Companion::tConstructor
                     map00["Feature0101.Companion::testGroupingBy"] =

@@ -1,5 +1,9 @@
 package com.runningmessage.kotref.kotlin.overview
 
+import com.runningmessage.kotref.utils.mPrintln
+import com.runningmessage.kotref.utils.wrap
+import com.runningmessage.sharedcode.createApplicationScreenMessage
+
 /**
  * 多平台
  *
@@ -86,6 +90,24 @@ class Multiplatform {
             }
 
             return sb.toString()
+
+        }
+
+        fun tString() = wrap {
+
+            mPrintln(createApplicationScreenMessage())
+
+            /** TODO fix build Error : run the command on terminal:
+             *
+             * sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/
+             *
+             * Error:
+            Task :SharedCode:compileKotlinIOS
+            xcrun: error: SDK "iphonesimulator" cannot be located
+            xcrun: error: SDK "iphonesimulator" cannot be located
+            xcrun: error: unable to lookup item 'Path' in SDK 'iphonesimulator'
+            exception: org.jetbrains.kotlin.konan.KonanExternalToolFailure: The /usr/bin/xcrun command returned non-zero exit code: 1.
+             */
 
         }
 
